@@ -3,261 +3,338 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Prstmit - Sell Gift Card Easy & Fast</title>
+    <title>Prstmit - Sell Gift Card Easy & Fast | Best Gift Card Rates</title>
     <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" rel="stylesheet">
     <style>
         :root {
             --gold: #FFD700;
             --dark: #000000;
-            --gray: #1a1a1a;
-            --text-light: #ffffff;
-            --text-gray: #888888;
-            --green: #25D366;
+            --gray-depth: #0f0f0f;
+            --card-bg: #1a1a1a;
+            --nav-bg: rgba(0,0,0,0.95);
+            --text-main: #ffffff;
+            --text-dim: #999999;
+            --wa-green: #25D366;
         }
 
-        * { margin: 0; padding: 0; box-sizing: border-box; font-family: 'Segoe UI', Roboto, Helvetica, Arial, sans-serif; }
-        body { background-color: var(--dark); color: var(--text-light); }
-        a { text-decoration: none; color: inherit; }
+        * { margin: 0; padding: 0; box-sizing: border-box; font-family: 'Inter', -apple-system, sans-serif; scroll-behavior: smooth; }
+        body { background-color: var(--dark); color: var(--text-main); line-height: 1.6; overflow-x: hidden; }
+        .container { max-width: 1200px; margin: 0 auto; padding: 0 20px; }
+        a { text-decoration: none; color: inherit; transition: 0.3s; }
+        li { list-style: none; }
 
-        /* HEADER */
+        /* --- STICKY HEADER --- */
         header {
-            padding: 20px 8%;
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-            position: sticky;
-            top: 0;
-            background: rgba(0,0,0,0.9);
-            z-index: 1000;
-            border-bottom: 1px solid #222;
+            position: fixed; top: 0; width: 100%; z-index: 1000;
+            background: var(--nav-bg); border-bottom: 1px solid #222;
+            padding: 15px 0;
         }
-        .logo { font-size: 24px; font-weight: bold; }
+        .header-content { display: flex; justify-content: space-between; align-items: center; }
+        .logo { font-size: 26px; font-weight: 900; letter-spacing: -1px; }
         .logo span { color: var(--gold); }
-        .nav-links a { margin-left: 25px; font-size: 14px; font-weight: 500; }
+        .nav-links { display: flex; gap: 30px; }
+        .nav-links a { font-size: 14px; font-weight: 600; text-transform: uppercase; letter-spacing: 0.5px; }
         .nav-links a:hover { color: var(--gold); }
+        .btn-header { background: var(--gold); color: #000; padding: 10px 25px; border-radius: 5px; font-weight: 800; }
 
-        /* FLOOR 1: HERO */
-        .hero {
-            padding: 100px 8% 60px;
-            display: flex;
-            align-items: center;
-            justify-content: space-between;
+        /* --- FLOOR 1: HERO --- */
+        .hero { padding: 160px 0 100px; background: radial-gradient(circle at top right, #1a1a00, #000); }
+        .hero-flex { display: flex; align-items: center; gap: 60px; }
+        .hero-text { flex: 1.2; }
+        .hero-text h2 { color: var(--gold); font-size: 20px; font-weight: 700; margin-bottom: 15px; }
+        .hero-text h1 { font-size: 64px; line-height: 1.1; font-weight: 900; margin-bottom: 25px; }
+        .hero-text p { font-size: 18px; color: var(--text-dim); margin-bottom: 40px; }
+        .hero-image { flex: 1; text-align: right; }
+        .hero-image img { width: 100%; max-width: 500px; filter: drop-shadow(0 0 50px rgba(255, 215, 0, 0.1)); }
+
+        /* --- FLOOR 2: QUICK STATS --- */
+        .stats-floor { padding: 60px 0; background: #080808; border-top: 1px solid #111; border-bottom: 1px solid #111; }
+        .stats-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 40px; text-align: center; }
+        .stat-card h3 { font-size: 48px; color: var(--gold); font-weight: 900; margin-bottom: 5px; }
+        .stat-card p { font-size: 14px; color: var(--text-dim); text-transform: uppercase; letter-spacing: 1px; }
+
+        /* --- FLOOR 3: CORE FEATURES REPLICATED --- */
+        .features-floor { padding: 100px 0; }
+        .section-tag { color: var(--gold); display: block; text-align: center; font-weight: 700; margin-bottom: 15px; }
+        .section-title { font-size: 42px; text-align: center; margin-bottom: 60px; font-weight: 800; }
+        .features-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 30px; }
+        .feature-card { background: var(--gray-depth); padding: 50px 30px; border-radius: 20px; border: 1px solid #222; text-align: center; }
+        .feature-card i { font-size: 40px; color: var(--gold); margin-bottom: 25px; }
+        .feature-card h4 { font-size: 24px; margin-bottom: 20px; }
+        .feature-card p { color: var(--text-dim); }
+
+        /* --- FLOOR 4: RATE CALCULATOR --- */
+        .calc-floor { padding: 100px 0; background: #050505; }
+        .calc-wrapper { max-width: 800px; margin: 0 auto; background: var(--card-bg); padding: 60px; border-radius: 30px; border: 1px solid #333; }
+        .calc-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 30px; margin-bottom: 40px; }
+        .input-group label { display: block; margin-bottom: 12px; color: var(--text-dim); font-size: 14px; }
+        .input-group select, .input-group input { 
+            width: 100%; padding: 18px; background: #000; border: 1px solid #333; color: #fff; border-radius: 12px; font-size: 16px; 
         }
-        .hero-content { max-width: 600px; }
-        .hero-content h2 { color: var(--gold); font-size: 42px; margin-bottom: 10px; }
-        .hero-content h1 { font-size: 52px; line-height: 1.1; margin-bottom: 20px; }
-        .hero-content p { color: var(--text-gray); font-size: 18px; margin-bottom: 35px; }
-        .hero-image img { width: 100%; max-width: 500px; }
+        .calc-result-box { background: rgba(255,215,0,0.05); padding: 30px; border-radius: 20px; text-align: center; border: 1px dashed var(--gold); }
+        .calc-result-box h5 { color: var(--text-dim); margin-bottom: 10px; }
+        .calc-result-box .amt { font-size: 36px; font-weight: 900; color: var(--gold); }
 
-        /* FLOOR 2: STATS */
-        .stats-section {
-            padding: 60px 8%;
-            display: grid;
-            grid-template-columns: repeat(3, 1fr);
-            gap: 20px;
-            text-align: center;
+        /* --- FLOOR 5: DAILY RATES TABLE --- */
+        .rates-floor { padding: 100px 0; }
+        .rates-table-container { background: #080808; border-radius: 20px; overflow: hidden; border: 1px solid #222; }
+        .rates-table { width: 100%; border-collapse: collapse; }
+        .rates-table th { padding: 25px; text-align: left; background: #111; color: var(--text-dim); font-size: 14px; text-transform: uppercase; }
+        .rates-table td { padding: 25px; border-bottom: 1px solid #1a1a1a; font-weight: 600; }
+        .rate-button { background: rgba(255,215,0,0.1); color: var(--gold); padding: 10px 20px; border-radius: 8px; font-size: 14px; }
+
+        /* --- FLOOR 6: ABOUT DETAILED --- */
+        .about-detailed { padding: 100px 0; background: #020202; }
+        .about-flex { display: flex; align-items: center; gap: 80px; }
+        .about-text { flex: 1; }
+        .about-text h3 { font-size: 40px; margin-bottom: 25px; }
+        .about-text p { color: var(--text-dim); margin-bottom: 30px; }
+
+        /* --- FLOOR 7: TESTIMONIALS --- */
+        .reviews-floor { padding: 100px 0; }
+        .reviews-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 30px; }
+        .review-card { background: var(--gray-depth); padding: 40px; border-radius: 20px; position: relative; }
+        .review-card i { font-size: 40px; color: #222; position: absolute; top: 20px; right: 20px; }
+        .review-card p { font-style: italic; color: #ccc; margin-bottom: 25px; position: relative; z-index: 1; }
+        .review-card .author { color: var(--gold); font-weight: 800; font-size: 18px; }
+
+        /* --- FLOOR 8: CALL TO ACTION --- */
+        .cta-floor { padding: 100px 0; text-align: center; background: linear-gradient(0deg, #1a1a00, #000); }
+        .cta-floor h2 { font-size: 48px; margin-bottom: 30px; }
+        .btn-large { background: var(--gold); color: #000; padding: 20px 60px; border-radius: 12px; font-size: 20px; font-weight: 900; display: inline-block; }
+
+        /* --- FLOATING & FOOTER --- */
+        .wa-float { 
+            position: fixed; bottom: 40px; right: 40px; background: var(--wa-green); 
+            padding: 18px 35px; border-radius: 50px; font-weight: 900; display: flex; align-items: center; gap: 15px; 
+            box-shadow: 0 10px 40px rgba(0,0,0,0.8); z-index: 10000; animation: bounce 2s infinite;
         }
-        .stat-box h3 { color: var(--gold); font-size: 36px; margin-bottom: 5px; }
-        .stat-box p { font-size: 14px; color: var(--text-gray); }
+        @keyframes bounce { 0%, 100% { transform: translateY(0); } 50% { transform: translateY(-10px); } }
+        
+        footer { padding: 80px 0; background: #000; border-top: 1px solid #222; }
+        .footer-grid { display: grid; grid-template-columns: 2fr 1fr 1fr; gap: 80px; }
+        .footer-logo { font-size: 28px; font-weight: 900; margin-bottom: 20px; }
+        .footer-links h5 { color: var(--gold); margin-bottom: 25px; font-size: 18px; }
+        .footer-links li { margin-bottom: 12px; color: var(--text-dim); }
 
-        /* FLOOR 3: INFO BLOCKS */
-        .info-grid {
-            padding: 60px 8%;
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
-            gap: 30px;
-        }
-        .info-card { background: var(--gray); padding: 40px; border-radius: 15px; transition: 0.3s; }
-        .info-card:hover { transform: translateY(-10px); }
-        .info-card i { color: var(--gold); font-size: 30px; margin-bottom: 20px; }
-        .info-card h4 { font-size: 22px; margin-bottom: 15px; }
-        .info-card p { color: var(--text-gray); }
-
-        /* FLOOR 4: CALCULATOR */
-        .calc-section { padding: 80px 8%; text-align: center; background: #080808; }
-        .calc-container { max-width: 600px; margin: 40px auto; background: var(--gray); padding: 40px; border-radius: 20px; }
-        .calc-input-group { margin-bottom: 25px; text-align: left; }
-        .calc-input-group label { display: block; margin-bottom: 10px; color: var(--text-gray); }
-        .calc-input-group select, .calc-input-group input { 
-            width: 100%; padding: 15px; background: #000; border: 1px solid #333; color: #fff; border-radius: 10px; 
-        }
-        .calc-result { margin-top: 30px; font-size: 24px; font-weight: bold; }
-        .btn-gold { 
-            background: var(--gold); color: #000; padding: 15px 40px; 
-            border-radius: 10px; font-weight: bold; display: inline-block; 
-            margin-top: 20px; transition: 0.3s;
-        }
-        .btn-gold:hover { background: #fff; transform: scale(1.05); }
-
-        /* FLOOR 5: RATES TABLE (Trade Component) */
-        .rates-section { padding: 80px 8%; }
-        .rates-table { width: 100%; border-collapse: collapse; margin-top: 40px; }
-        .rates-table th { text-align: left; padding: 20px; border-bottom: 1px solid #333; color: var(--text-gray); font-size: 14px; }
-        .rates-table td { padding: 25px 20px; border-bottom: 1px solid #111; }
-        .rates-table tr:hover { background: #0a0a0a; }
-        .rate-tag { background: rgba(255, 215, 0, 0.1); color: var(--gold); padding: 5px 12px; border-radius: 5px; font-size: 12px; font-weight: bold; }
-
-        /* FLOOR 6: REVIEWS */
-        .reviews-section { padding: 80px 8%; text-align: center; }
-        .reviews-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 30px; margin-top: 50px; }
-        .review-box { background: var(--gray); padding: 40px; border-radius: 15px; text-align: left; position: relative; }
-        .review-box::before { content: "\201C"; font-size: 80px; color: #333; position: absolute; top: 10px; left: 20px; }
-        .review-box p { font-style: italic; color: #ccc; margin-bottom: 20px; position: relative; z-index: 1; }
-        .review-author { color: var(--gold); font-weight: bold; }
-
-        /* FOOTER */
-        footer { padding: 60px 8%; background: #050505; text-align: center; border-top: 1px solid #222; }
-        .wa-float {
-            position: fixed; bottom: 30px; right: 30px; background: var(--green);
-            color: white; padding: 15px 30px; border-radius: 50px;
-            display: flex; align-items: center; gap: 10px; font-weight: bold;
-            box-shadow: 0 10px 30px rgba(0,0,0,0.5); z-index: 10000;
-        }
-
-        @media (max-width: 768px) {
-            .hero { flex-direction: column; text-align: center; padding-top: 50px; }
+        @media (max-width: 992px) {
+            .hero-flex, .about-flex, .calc-grid, .features-grid, .reviews-grid, .footer-grid, .stats-grid { grid-template-columns: 1fr; flex-direction: column; text-align: center; }
             .hero-image { display: none; }
-            .stats-section { grid-template-columns: 1fr; }
             .nav-links { display: none; }
+            .hero-text h1 { font-size: 42px; }
         }
     </style>
 </head>
 <body>
 
     <header>
-        <div class="logo">PRST<span>MIT</span></div>
-        <nav class="nav-links">
-            <a href="#about">About</a>
-            <a href="#calculator">Calculator</a>
-            <a href="#rates">High Rates</a>
-            <a href="#reviews">Reviews</a>
-        </nav>
+        <div class="container header-content">
+            <a href="#" class="logo">PRST<span>MIT</span></a>
+            <nav class="nav-links">
+                <a href="#about">About</a>
+                <a href="#features">Services</a>
+                <a href="#calculator">Calculator</a>
+                <a href="#rates">Live Rates</a>
+                <a href="#reviews">Reviews</a>
+            </nav>
+            <a href="https://wa.me/85266431798" class="btn-header">TRADE NOW</a>
+        </div>
     </header>
 
-    <!-- FLOOR 1: Sell Gift Card -->
-    <section class="hero" id="about">
-        <div class="hero-content">
-            <h2>Sell Gift Card</h2>
-            <h1>Easy & Fast with Prstmit™</h1>
-            <p>Prstmit is your trusted partner for selling gift cards online. Turn your gift cards into cash quickly and securely. Sell your gift cards today!</p>
-            <a href="https://wa.me/85266431798" class="btn-gold">Contact us anytime</a>
-        </div>
-        <div class="hero-image">
-            <img src="https://cdni.iconscout.com/illustration/premium/thumb/successful-payment-illustration-download-in-svg-png-gif-formats--transaction-completed-billing-invoice-business-activity-pack-people-illustrations-4739190.png" alt="Hero">
+    <!-- FLOOR 1: HERO -->
+    <section class="hero" id="home">
+        <div class="container hero-flex">
+            <div class="hero-text">
+                <h2>SELL GIFT CARD</h2>
+                <h1>Easy & Fast with <span>Prstmit™</span></h1>
+                <p>Prstmit is your trusted partner for selling gift cards online. Turn your gift cards into cash quickly and securely. Sell your gift cards today!</p>
+                <div style="display: flex; gap: 20px;">
+                    <a href="https://wa.me/85266431798" class="btn-large" style="padding: 15px 40px; font-size: 16px;">Contact Us Anytime</a>
+                </div>
+            </div>
+            <div class="hero-image">
+                <img src="https://cdni.iconscout.com/illustration/premium/thumb/successful-payment-illustration-download-in-svg-png-gif-formats--transaction-completed-billing-invoice-business-activity-pack-people-illustrations-4739190.png" alt="Hero">
+            </div>
         </div>
     </section>
 
-    <!-- FLOOR 2: Stats -->
-    <section class="stats-section">
-        <div class="stat-box"><h3>30</h3><p>Cards Processed Per Day</p></div>
-        <div class="stat-box"><h3>10</h3><p>Transaction Per Day</p></div>
-        <div class="stat-box"><h3>20</h3><p>Customers Per Year</p></div>
-    </section>
-
-    <!-- FLOOR 3: Info Blocks -->
-    <section class="info-grid">
-        <div class="info-card">
-            <i class="fas fa-paper-plane"></i>
-            <h4>Send Money</h4>
-            <p>Fast Payment Via Bank Transfer</p>
-        </div>
-        <div class="info-card">
-            <i class="fas fa-chart-line"></i>
-            <h4>Exchange rate trading</h4>
-            <p>Exchange rate calculator calculates real-time exchange rates for transactions</p>
-        </div>
-        <div class="info-card">
-            <i class="fas fa-comments"></i>
-            <h4>Whatsapp</h4>
-            <p>24/7 customer service online</p>
+    <!-- FLOOR 2: QUICK STATS -->
+    <section class="stats-floor">
+        <div class="container stats-grid">
+            <div class="stat-card"><h3>30</h3><p>Cards Processed Per Day</p></div>
+            <div class="stat-card"><h3>10</h3><p>Transaction Per Day</p></div>
+            <div class="stat-card)<h3>20</h3><p>Customers Per Year</p></div>
         </div>
     </section>
 
-    <!-- FLOOR 4: Calculator -->
-    <section class="calc-section" id="calculator">
-        <h2>Gift Card Rate Calculator</h2>
-        <p style="color:var(--text-gray); margin-top:10px;">Select card type and enter value to get approxinate rate.</p>
-        <div class="calc-container">
-            <div class="calc-input-group">
-                <label>Gift Card Type</label>
-                <select id="cardType">
-                    <option value="1327">Vanilla Visa (USA)</option>
-                    <option value="1213">Steam Card (USA)</option>
-                    <option value="1315">Xbox Card (UK)</option>
-                </select>
+    <!-- FLOOR 3: DETAILED FEATURES -->
+    <section class="features-floor" id="features">
+        <div class="container">
+            <span class="section-tag">OUR SERVICES</span>
+            <h2 class="section-title">Sell Gift Cards and Get Instant</h2>
+            <div class="features-grid">
+                <div class="feature-card">
+                    <i class="fas fa-university"></i>
+                    <h4>Send Money</h4>
+                    <p>Fast Payment Via Bank Transfer to any local bank within minutes.</p>
+                </div>
+                <div class="feature-card">
+                    <i class="fas fa-calculator"></i>
+                    <h4>Exchange Rate Trading</h4>
+                    <p>Exchange rate calculator calculates real-time exchange rates for all transactions.</p>
+                </div>
+                <div class="feature-card">
+                    <i class="fab fa-whatsapp"></i>
+                    <h4>24/7 Support</h4>
+                    <p>Professional customer service online via WhatsApp 24/7/365.</p>
+                </div>
             </div>
-            <div class="calc-input-group">
-                <label>Amount ($)</label>
-                <input type="number" id="cardAmount" value="100">
-            </div>
-            <div class="calc-result">
-                How much you would get: <br>
-                <span id="resultDisplay" style="color:var(--gold)">₦132,700</span>
-            </div>
-            <a href="https://wa.me/85266431798" class="btn-gold">Trade Now</a>
         </div>
     </section>
 
-    <!-- FLOOR 5: Top Gift Cards Rates Today -->
-    <section class="rates-section" id="rates">
-        <h2 style="text-align: center; font-size: 32px;">Top Gift Cards Rates Today</h2>
-        <table class="rates-table">
-            <thead>
-                <tr>
-                    <th>Type</th>
-                    <th>Region</th>
-                    <th>Value</th>
-                    <th>Rate</th>
-                </tr>
-            </thead>
-            <tbody>
-                <tr><td>Vanilla Visa</td><td>USA</td><td>300-500</td><td><span class="rate-tag">NGN 1,327</span></td></tr>
-                <tr><td>Xbox Card</td><td>UK</td><td>100+</td><td><span class="rate-tag">NGN 1,315</span></td></tr>
-                <tr><td>Steam Card</td><td>EUR</td><td>100-500</td><td><span class="rate-tag">NGN 1,270</span></td></tr>
-                <tr><td>Amazon Card</td><td>USA</td><td>All</td><td><span class="rate-tag">NGN 1,150</span></td></tr>
-            </tbody>
-        </table>
+    <!-- FLOOR 4: ADVANCED CALCULATOR -->
+    <section class="calc-floor" id="calculator">
+        <div class="container">
+            <span class="section-tag">ESTIMATE VALUE</span>
+            <h2 class="section-title">Gift Card Rate Calculator</h2>
+            <div class="calc-wrapper">
+                <div class="calc-grid">
+                    <div class="input-group">
+                        <label>Select Your Card</label>
+                        <select id="cType">
+                            <option value="1327">Vanilla Visa [300-500]</option>
+                            <option value="1315">Xbox Card UK</option>
+                            <option value="1270">Steam Card EUR</option>
+                            <option value="1213">Steam Card USD</option>
+                            <option value="1150">Amazon USA</option>
+                        </select>
+                    </div>
+                    <div class="input-group">
+                        <label>Face Value ($)</label>
+                        <input type="number" id="cAmt" value="100">
+                    </div>
+                </div>
+                <div class="calc-result-box">
+                    <h5>You will receive approximately:</h5>
+                    <div class="amt" id="res">₦132,700</div>
+                    <a href="https://wa.me/85266431798" class="btn-gold" style="margin-top: 30px;">Trade At This Rate</a>
+                </div>
+            </div>
+        </div>
     </section>
 
-    <!-- FLOOR 6: Reviews -->
-    <section class="reviews-section" id="reviews">
-        <h2 style="font-size: 32px;">Reviews from our clients</h2>
-        <div class="reviews-grid">
-            <div class="review-box">
-                <p>"The company is doing so well trades are fast no delay rate are massive and sweet, Keep the Good work!"</p>
-                <div class="review-author">Henrycavill Private</div>
+    <!-- FLOOR 5: DETAILED LIVE RATES -->
+    <section class="rates-floor" id="rates">
+        <div class="container">
+            <span class="section-tag">LIVE MARKET</span>
+            <h2 class="section-title">Top Gift Cards Rates Today</h2>
+            <div class="rates-table-container">
+                <table class="rates-table">
+                    <thead>
+                        <tr><th>Gift Card</th><th>Region</th><th>Face Value</th><th>Rate (NGN)</th><th>Action</th></tr>
+                    </thead>
+                    <tbody>
+                        <tr><td>Vanilla Visa</td><td>USA</td><td>300-500</td><td>1327</td><td><a href="https://wa.me/85266431798" class="rate-button">Trade</a></td></tr>
+                        <tr><td>Xbox Card</td><td>UK</td><td>All</td><td>1315</td><td><a href="https://wa.me/85266431798" class="rate-button">Trade</a></td></tr>
+                        <tr><td>Vanilla Visa</td><td>USA</td><td>100-299</td><td>1200</td><td><a href="https://wa.me/85266431798" class="rate-button">Trade</a></td></tr>
+                        <tr><td>Steam Card</td><td>EUR</td><td>100-500</td><td>1270</td><td><a href="https://wa.me/85266431798" class="rate-button">Trade</a></td></tr>
+                        <tr><td>Steam Card</td><td>USD</td><td>All</td><td>1213</td><td><a href="https://wa.me/85266431798" class="rate-button">Trade</a></td></tr>
+                    </tbody>
+                </table>
             </div>
-            <div class="review-box">
-                <p>"They are Truly fast and amazing rate. Trusted and they respect and value their customers 100!"</p>
-                <div class="review-author">Tommy Tom</div>
+        </div>
+    </section>
+
+    <!-- FLOOR 6: ABOUT US REPLICATED -->
+    <section class="about-detailed" id="about">
+        <div class="container about-flex">
+            <div class="hero-image" style="flex:1; text-align:left;">
+                <img src="https://cdni.iconscout.com/illustration/premium/thumb/online-transaction-illustration-download-in-svg-png-gif-formats--digital-payment-sending-money-wire-transfer-business-pack-illustrations-5231711.png" alt="About">
             </div>
+            <div class="about-text">
+                <span class="section-tag" style="text-align:left;">EXPERIENCE</span>
+                <h3>Let the numbers talk! We have served more than 100K+ users.</h3>
+                <p>Prstmit™ provides the most competitive rates and instant response, leading to spontaneous profit growth for customers. Our automated systems ensure your gift cards are processed with maximum efficiency.</p>
+                <div style="display:grid; grid-template-columns:1fr 1fr; gap:20px;">
+                    <div><h4 style="color:var(--gold); font-size:24px;">100%</h4><p>Secure Transactions</p></div>
+                    <div><h4 style="color:var(--gold); font-size:24px;">Instant</h4><p>Bank Payouts</p></div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- FLOOR 7: REVIEWS FLIGHT -->
+    <section class="reviews-floor" id="reviews">
+        <div class="container">
+            <span class="section-tag">TESTIMONIALS</span>
+            <h2 class="section-title">Reviews from our clients</h2>
+            <div class="reviews-grid">
+                <div class="review-card">
+                    <i class="fas fa-quote-right"></i>
+                    <p>"The company is doing so well trades are fast no delay rate are massive and sweet, Keep the Good work and I recommend this platform."</p>
+                    <div class="author">Henrycavill Private</div>
+                </div>
+                <div class="review-card">
+                    <i class="fas fa-quote-right"></i>
+                    <p>"They are Truly fast and amazing rate. Trusted and they respect and value their customers 100 it’s a pleasure meeting you guys!"</p>
+                    <div class="author">Tommy Tom</div>
+                </div>
+                <div class="review-card">
+                    <i class="fas fa-quote-right"></i>
+                    <p>"Joyce is a trustworthy person and fastest in payments transactions, reliable, friendly and understanding. Expert in the business!"</p>
+                    <div class="author">Kiss Stephen</div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- FLOOR 8: TRY PRSTMIT -->
+    <section class="cta-floor">
+        <div class="container">
+            <h2>Try Prstmit today for higher profits!</h2>
+            <p style="color:var(--text-dim); margin-bottom:40px;">Join the best Gift Card Exchange, made by Prstmit.</p>
+            <a href="https://wa.me/85266431798" class="btn-large">START TRADING NOW</a>
         </div>
     </section>
 
     <!-- FOOTER -->
     <footer>
-        <h2 style="margin-bottom: 20px;">Try Prstmit today for higher profits!</h2>
-        <p style="color:var(--text-gray);">Contact us anytime for professional and swift service.</p>
-        <p style="margin-top: 30px; font-size: 12px; color: #444;">&copy; 2026 Prstmit™. All Rights Reserved.</p>
+        <div class="container footer-grid">
+            <div class="footer-info">
+                <div class="footer-logo">PRST<span>MIT</span></div>
+                <p style="color:var(--text-dim);">Prstmit is a professional and swift service provider for all gift card redemptions. Available 24/7 for global users.</p>
+            </div>
+            <div class="footer-links">
+                <h5>Quick Links</h5>
+                <ul>
+                    <li><a href="#home">Home</a></li>
+                    <li><a href="#calculator">Calculator</a></li>
+                    <li><a href="#rates">Daily Rates</a></li>
+                </ul>
+            </div>
+            <div class="footer-links">
+                <h5>Contact</h5>
+                <ul>
+                    <li>Official WhatsApp</li>
+                    <li>24/7 Online Support</li>
+                    <li>Live Chat</li>
+                </ul>
+            </div>
+        </div>
+        <div class="container" style="text-align:center; padding-top:60px; color:#333; font-size:12px;">
+            &copy; 2026 Prstmit™ Enterprise. Dedicated to Excellence.
+        </div>
     </footer>
 
-    <!-- WhatsApp Entry -->
-    <a href="https://wa.me/85266431798" class="wa-float">
-        <i class="fab fa-whatsapp"></i> Chat with Expert
+    <!-- PRO WhatsApp Button -->
+    <a href="https://wa.me/85266431798" class="wa-float" target="_blank">
+        <i class="fab fa-whatsapp"></i> Chat for Quote
     </a>
 
     <script>
-        const cardType = document.getElementById('cardType');
-        const cardAmount = document.getElementById('cardAmount');
-        const resultDisplay = document.getElementById('resultDisplay');
-
-        function update() {
-            const res = parseInt(cardType.value) * (parseInt(cardAmount.value) || 0);
-            resultDisplay.innerText = '₦' + res.toLocaleString();
-        }
-
-        cardType.addEventListener('change', update);
-        cardAmount.addEventListener('input', update);
+        const c=document.getElementById('cType'),a=document.getElementById('cAmt'),r=document.getElementById('res');
+        function u(){r.innerText='₦'+(parseInt(c.value)*(parseInt(a.value)||0)).toLocaleString();}
+        c.addEventListener('change',u);a.addEventListener('input',u);
     </script>
 </body>
 </html>
