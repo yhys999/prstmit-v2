@@ -3,195 +3,225 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Prstmit - Sell Gift Cards Easy & Fast</title>
+    <title>Prstmit - Trusted Gift Card Trading</title>
     <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" rel="stylesheet">
     <style>
         :root {
-            --primary-color: #ffd700;
-            --dark-bg: #121212;
-            --card-bg: #1e1e1e;
+            --primary: #FFD700;
+            --accent: #FFC107;
+            --dark-bg: #0F0F0F;
+            --card-bg: #1A1A1A;
             --wa-green: #25D366;
+            --text-gray: #B0B0B0;
         }
         body {
-            font-family: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
+            font-family: 'Inter', system-ui, -apple-system, sans-serif;
             background-color: var(--dark-bg);
-            color: #ffffff;
+            color: #FFFFFF;
             margin: 0;
-            padding: 0;
             line-height: 1.6;
         }
 
-        /* Hero Section */
+        /* Hero Section with Human Presence */
         .hero {
-            padding: 80px 20px;
-            text-align: center;
-            background: linear-gradient(180deg, #1a1a1a 0%, #121212 100%);
-        }
-        .hero h1 {
-            font-size: 3rem;
-            color: var(--primary-color);
-            margin-bottom: 20px;
-        }
-        .hero p {
-            font-size: 1.2rem;
-            max-width: 800px;
-            margin: 0 auto 40px;
-            color: #ccc;
-        }
-
-        /* Buttons */
-        .btn-trade {
-            background-color: var(--primary-color);
-            color: #000;
-            padding: 15px 40px;
-            border-radius: 8px;
-            text-decoration: none;
-            font-weight: bold;
-            font-size: 1.1rem;
-            display: inline-block;
-            transition: 0.3s;
-        }
-        .btn-trade:hover {
-            transform: scale(1.05);
-            background-color: #e6c200;
-        }
-
-        /* Stats Section */
-        .stats-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
-            gap: 20px;
-            max-width: 1000px;
-            margin: -50px auto 60px;
-            padding: 0 20px;
-        }
-        .stat-card {
-            background: var(--card-bg);
-            padding: 30px;
-            border-radius: 15px;
-            text-align: center;
-            border: 1px solid #333;
-        }
-        .stat-card h2 { color: var(--primary-color); margin: 0; font-size: 2.5rem; }
-
-        /* Rate Calculator Sim */
-        .calculator {
-            max-width: 600px;
-            margin: 60px auto;
-            background: var(--card-bg);
-            padding: 40px;
-            border-radius: 20px;
-            border: 1px solid #ffd70033;
-        }
-        .calculator h2 { text-align: center; color: var(--primary-color); }
-        .input-group { margin-bottom: 20px; }
-        .input-group label { display: block; margin-bottom: 8px; color: #aaa; }
-        .input-group select, .input-group input {
-            width: 100%;
-            padding: 12px;
-            background: #2a2a2a;
-            border: 1px solid #444;
-            color: white;
-            border-radius: 8px;
-        }
-
-        /* Reviews */
-        .reviews { padding: 80px 20px; background: #0a0a0a; }
-        .review-card {
-            background: var(--card-bg);
-            padding: 25px;
-            border-radius: 12px;
-            margin-bottom: 20px;
-            border-left: 4px solid var(--primary-color);
-        }
-
-        /* Floating WhatsApp */
-        .wa-float {
-            position: fixed;
-            bottom: 30px;
-            right: 30px;
-            background-color: var(--wa-green);
-            width: 65px;
-            height: 65px;
-            border-radius: 50%;
             display: flex;
             align-items: center;
-            justify-content: center;
-            box-shadow: 0 4px 15px rgba(0,0,0,0.4);
-            z-index: 1000;
-            animation: pulse 2s infinite;
+            justify-content: space-between;
+            padding: 100px 10% 60px;
+            background: radial-gradient(circle at top right, #222, var(--dark-bg));
+            flex-wrap: wrap;
+        }
+        .hero-text { flex: 1; min-width: 300px; padding-right: 40px; }
+        .hero-text h1 { font-size: 3.5rem; color: var(--primary); margin: 0; line-height: 1.1; }
+        .hero-text p { font-size: 1.2rem; color: var(--text-gray); margin: 20px 0 35px; }
+        
+        .hero-image {
+            flex: 1;
+            min-width: 300px;
+            text-align: center;
+            position: relative;
+        }
+        .hero-image img {
+            width: 100%;
+            max-width: 450px;
+            filter: drop-shadow(0 0 20px rgba(255, 215, 0, 0.2));
+            /* Placeholder for professional representative photo */
+            border-bottom: 4px solid var(--primary);
+        }
+        .trust-badge {
+            position: absolute;
+            bottom: 20px;
+            right: 20px;
+            background: var(--wa-green);
+            padding: 10px 20px;
+            border-radius: 50px;
+            font-weight: bold;
+            display: flex;
+            align-items: center;
+            gap: 8px;
+            box-shadow: 0 4px 15px rgba(0,0,0,0.5);
+        }
+
+        /* Buttons Update */
+        .btn-main {
+            background: linear-gradient(45deg, var(--primary), var(--accent));
+            color: #000;
+            padding: 18px 45px;
+            border-radius: 12px;
             text-decoration: none;
+            font-weight: 800;
+            font-size: 1.2rem;
+            display: inline-flex;
+            align-items: center;
+            gap: 10px;
+            transition: 0.3s;
+            box-shadow: 0 10px 20px rgba(255, 215, 0, 0.2);
         }
-        .wa-float i { font-size: 35px; color: white; }
+        .btn-main:hover { transform: translateY(-5px); box-shadow: 0 15px 30px rgba(255, 215, 0, 0.4); }
 
-        @keyframes pulse {
-            0% { transform: scale(1); box-shadow: 0 0 0 0 rgba(37, 211, 102, 0.7); }
-            70% { transform: scale(1.05); box-shadow: 0 0 0 15px rgba(37, 211, 102, 0); }
-            100% { transform: scale(1); box-shadow: 0 0 0 0 rgba(37, 211, 102, 0); }
+        /* Rates & Face Value Focus */
+        .rates-container { padding: 80px 10%; background: #080808; }
+        .section-title { text-align: center; color: var(--primary); margin-bottom: 50px; }
+        .rate-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 20px; }
+        .rate-card {
+            background: var(--card-bg);
+            padding: 25px;
+            border-radius: 15px;
+            border: 1px solid #333;
+            transition: 0.3s;
         }
+        .rate-card:hover { border-color: var(--primary); }
+        .rate-card .card-name { font-weight: bold; font-size: 1.1rem; color: var(--primary); }
+        .rate-card .price { display: block; font-size: 1.8rem; font-weight: 900; margin: 10px 0; color: #fff; }
+        .rate-card .sub { color: #888; font-size: 0.9rem; }
 
-        footer { text-align: center; padding: 40px; color: #666; font-size: 0.9rem; }
+        /* Reviews with Human Profile */
+        .review-section { padding: 80px 10%; }
+        .review-card {
+            background: var(--card-bg);
+            padding: 30px;
+            border-radius: 20px;
+            margin-bottom: 30px;
+            display: flex;
+            gap: 20px;
+            align-items: center;
+        }
+        .user-avatar { width: 60px; height: 60px; border-radius: 50%; background: #444; overflow: hidden; }
+        .user-avatar img { width: 100%; height: 100%; object-fit: cover; }
+        .review-content blockquote { margin: 0; font-style: italic; color: #ddd; }
+        .review-content cite { display: block; margin-top: 10px; color: var(--primary); font-weight: bold; }
+
+        /* Floating WhatsApp Improved */
+        .wa-float {
+            position: fixed;
+            bottom: 35px;
+            right: 35px;
+            background: var(--wa-green);
+            color: white;
+            padding: 12px 25px;
+            border-radius: 50px;
+            display: flex;
+            align-items: center;
+            gap: 12px;
+            text-decoration: none;
+            font-weight: bold;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.5);
+            z-index: 10000;
+            transition: 0.3s;
+        }
+        .wa-float:hover { background: #1eb954; transform: scale(1.05); }
+        .wa-icon-box { background: white; width: 35px; height: 35px; border-radius: 50%; display: flex; align-items: center; justify-content: center; }
+        .wa-icon-box i { color: var(--wa-green); font-size: 20px; }
+
+        @media (max-width: 768px) {
+            .hero { padding: 60px 5%; text-align: center; }
+            .hero-text { padding-right: 0; }
+            .hero-text h1 { font-size: 2.5rem; }
+            .wa-float span { display: none; }
+            .wa-float { width: 65px; height: 65px; padding: 0; justify-content: center; }
+        }
     </style>
 </head>
 <body>
 
-    <section class="hero">
-        <h1>Sell Gift Card</h1>
-        <h3>Easy & Fast with Prstmit™</h3>
-        <p>Prstmit is your trusted partner for selling gift cards online. Turn your gift cards into cash quickly and securely. Sell your gift cards today!</p>
-        <a href="https://wa.me/85266431798?text=I%20want%20to%20trade%20now" class="btn-trade">
-            Trade Now
-        </a>
-    </section>
-
-    <div class="stats-grid">
-        <div class="stat-card"><h2>30</h2><p>Cards Processed/Day</p></div>
-        <div class="stat-card"><h2>10</h2><p>Transactions/Day</p></div>
-        <div class="stat-card"><h2>20</h2><p>Years of Trust</p></div>
-    </div>
-
-    <section class="calculator">
-        <h2>Gift Card Rate Calculator</h2>
-        <div class="input-group">
-            <label>Select Gift Card Type</label>
-            <select>
-                <option>Steam Card</option>
-                <option>Vanilla Visa</option>
-                <option>Apple/iTunes</option>
-                <option>Xbox</option>
-            </select>
+    <header class="hero">
+        <div class="hero-text">
+            <h1>Expert In Gift Cards Trading</h1>
+            <p>Fast payment via bank transfer. Professional customer service available 24/7 to ensure your profits grow spontaneously.</p>
+            <a href="https://wa.me/85266431798?text=Hello%20Prstmit,%20I%20want%20to%20trade%20my%20gift%20cards" class="btn-main">
+                <i class="fas fa-bolt"></i> START TRADING NOW
+            </a>
         </div>
-        <div class="input-group">
-            <label>Face Value</label>
-            <input type="number" placeholder="Enter amount (e.g. 100)">
-        </div>
-        <a href="https://wa.me/85266431798?text=Get%20Latest%20Pricing" class="btn-trade" style="width: 100%; text-align: center; box-sizing: border-box;">
-            Get a Quote
-        </a>
-    </section>
-
-    <section class="reviews">
-        <h2 style="text-align: center; color: var(--primary-color); margin-bottom: 40px;">What Our Clients Say</h2>
-        <div style="max-width: 800px; margin: 0 auto;">
-            <div class="review-card">
-                <p>"The company is doing so well, trades are fast no delay. Keep the Good work!"</p>
-                <strong>- Henrycavill</strong>
+        <div class="hero-image">
+            <!-- Representing professional human presence (Representative silhouette/Placeholder) -->
+            <img src="https://cdni.iconscout.com/illustration/premium/thumb/customer-service-female-illustration-download-in-svg-png-gif-formats--call-boy-center-office-care-lifestyle-pack-people-illustrations-3329241.png" alt="Prstmit Representative">
+            <div class="trust-badge">
+                <i class="fas fa-check-circle"></i> Verified Agent
             </div>
-            <div class="review-card">
-                <p>"Truly fast and amazing rate. Trusted and they respect customers 100%."</p>
-                <strong>- Tommy</strong>
+        </div>
+    </header>
+
+    <section class="rates-container">
+        <h2 class="section-title">Today's Premium Rates</h2>
+        <div class="rate-grid">
+            <div class="rate-card">
+                <div class="card-name">Vanilla Visa [300-500]</div>
+                <span class="price">NGN 1,327</span>
+                <span class="sub">Instant Response Rate</span>
+                <br><br>
+                <a href="https://wa.me/85266431798?text=I%20have%20Vanilla%20Visa%20300-500" style="color:var(--primary); text-decoration: none; font-weight: bold;">Trade This Card →</a>
+            </div>
+            <div class="rate-card">
+                <div class="card-name">Steam Card [EUR]</div>
+                <span class="price">NGN 1,270</span>
+                <span class="sub">Verified Rate</span>
+                <br><br>
+                <a href="https://wa.me/85266431798?text=I%20have%20Steam%20EUR" style="color:var(--primary); text-decoration: none; font-weight: bold;">Trade This Card →</a>
+            </div>
+            <div class="rate-card">
+                <div class="card-name">Xbox [USA/UK]</div>
+                <span class="price">NGN 1,315</span>
+                <span class="sub">Best Value Today</span>
+                <br><br>
+                <a href="https://wa.me/85266431798?text=I%20have%20Xbox%20Card" style="color:var(--primary); text-decoration: none; font-weight: bold;">Trade This Card →</a>
             </div>
         </div>
     </section>
 
-    <footer>
-        &copy; 2026 Prstmit™. All Rights Reserved. <br>
-        Contact us anytime for 24/7 Service.
+    <section class="review-section">
+        <h2 class="section-title">What Our Global Clients Say</h2>
+        <div class="review-card">
+            <div class="user-avatar">
+                <img src="https://randomuser.me/api/portraits/men/32.jpg" alt="Henry">
+            </div>
+            <div class="review-content">
+                <blockquote>"The company is doing so well, trades are fast no delay. Keep the Good work and I recommend this platform for anyone."</blockquote>
+                <cite>— Henrycavill Private</cite>
+            </div>
+        </div>
+        <div class="review-card">
+            <div class="user-avatar">
+                <img src="https://randomuser.me/api/portraits/women/44.jpg" alt="Sara">
+            </div>
+            <div class="review-content">
+                <blockquote>"She is the fastest and most reliable I've ever done business with. It’s a pleasure meeting you guys!"</blockquote>
+                <cite>— Sara Smith</cite>
+            </div>
+        </div>
+    </section>
+
+    <footer style="padding: 60px 10%; background: #000; text-align: center; border-top: 1px solid #222;">
+        <h2 style="color: var(--primary);">Join the Best Exchange</h2>
+        <p style="color: var(--text-gray);">Contact us anytime for cloud transaction quotation system.</p>
+        <a href="https://wa.me/85266431798" class="btn-main">GET A FREE QUOTE</a>
     </footer>
 
-    <!-- 全局悬浮按钮 -->
+    <!-- Fixed Floating WhatsApp with Text -->
     <a href="https://wa.me/85266431798" class="wa-float" target="_blank">
-        <i class="fab fa-whatsapp"></i>
+        <span>Chat with an Expert</span>
+        <div class="wa-icon-box">
+            <i class="fab fa-whatsapp"></i>
+        </div>
     </a>
 
 </body>
