@@ -3,244 +3,261 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Prstmit - Leading Gift Card Exchange Platform</title>
+    <title>Prstmit - Sell Gift Card Easy & Fast</title>
     <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" rel="stylesheet">
     <style>
         :root {
-            --primary: #FFD700;
-            --primary-dark: #ccae00;
-            --dark-bg: #0a0a0a;
-            --card-bg: #141414;
-            --text-gray: #a0a0a0;
-            --wa-green: #25D366;
+            --gold: #FFD700;
+            --dark: #000000;
+            --gray: #1a1a1a;
+            --text-light: #ffffff;
+            --text-gray: #888888;
+            --green: #25D366;
         }
 
-        * { margin: 0; padding: 0; box-sizing: border-box; scroll-behavior: smooth; }
-        body {
-            font-family: 'Inter', -apple-system, sans-serif;
-            background-color: var(--dark-bg);
-            color: #fff;
-            line-height: 1.6;
-        }
+        * { margin: 0; padding: 0; box-sizing: border-box; font-family: 'Segoe UI', Roboto, Helvetica, Arial, sans-serif; }
+        body { background-color: var(--dark); color: var(--text-light); }
+        a { text-decoration: none; color: inherit; }
 
-        /* --- STICKY NAVIGATION --- */
-        .site-header {
-            background: rgba(10, 10, 10, 0.95);
-            backdrop-filter: blur(10px);
-            padding: 15px 8%;
+        /* HEADER */
+        header {
+            padding: 20px 8%;
             display: flex;
             justify-content: space-between;
             align-items: center;
             position: sticky;
             top: 0;
-            z-index: 10000;
-            border-bottom: 1px solid #333;
-        }
-        
-        .logo-box {
-            display: flex;
-            align-items: center;
-            gap: 12px;
-            text-decoration: none;
-        }
-
-        .logo-icon {
-            background: linear-gradient(135deg, var(--primary), #FFC107);
-            width: 40px;
-            height: 40px;
-            border-radius: 8px;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            box-shadow: 0 0 15px rgba(255, 215, 0, 0.3);
-        }
-
-        .logo-icon i { color: #000; font-size: 20px; }
-
-        .logo-text {
-            font-size: 24px;
-            font-weight: 900;
-            letter-spacing: -0.5px;
-            color: #fff;
-            text-transform: uppercase;
-        }
-
-        .logo-text span { color: var(--primary); }
-
-        .nav-links { display: flex; gap: 30px; align-items: center; }
-        .nav-links a { 
-            color: #fff; 
-            text-decoration: none; 
-            font-size: 14px; 
-            font-weight: 600; 
-            transition: 0.3s; 
-            text-transform: uppercase;
-        }
-        
-        .nav-links a:hover { color: var(--primary); }
-
-        .header-right { display: flex; align-items: center; gap: 20px; }
-        .header-cta {
-            background: var(--primary);
-            color: #000 !important;
-            padding: 10px 24px;
-            border-radius: 6px;
-            font-weight: 800;
-            text-decoration: none;
-            transition: 0.3s;
-            display: inline-block;
-        }
-        .header-cta:hover { background: #fff; transform: scale(1.05); }
-        .mobile-menu-icon { display: none; font-size: 24px; cursor: pointer; color: var(--primary); }
-
-        /* --- HERO SECTION --- */
-        .hero {
-            padding: 100px 8% 80px;
-            display: grid;
-            grid-template-columns: 1.2fr 1fr;
-            align-items: center;
-            gap: 50px;
-        }
-        .hero-title h1 { font-size: 4rem; line-height: 1.1; margin-bottom: 25px; }
-        .hero-title h1 span { color: var(--primary); }
-        .hero-title p { font-size: 1.1rem; color: var(--text-gray); margin-bottom: 40px; max-width: 500px; }
-        .hero-img { position: relative; }
-        .hero-img img { width: 100%; max-width: 480px; filter: drop-shadow(0 0 30px rgba(255, 215, 0, 0.15)); }
-
-        /* --- STATS BAR --- */
-        .stats-bar {
-            display: flex;
-            justify-content: space-around;
-            padding: 50px 8%;
-            background: #111;
-            margin: 40px 0;
-            border-top: 1px solid #222;
+            background: rgba(0,0,0,0.9);
+            z-index: 1000;
             border-bottom: 1px solid #222;
         }
-        .stat-item { text-align: center; }
-        .stat-item h2 { font-size: 2.5rem; color: var(--primary); }
-        .stat-item p { font-size: 0.9rem; color: var(--text-gray); text-transform: uppercase; }
+        .logo { font-size: 24px; font-weight: bold; }
+        .logo span { color: var(--gold); }
+        .nav-links a { margin-left: 25px; font-size: 14px; font-weight: 500; }
+        .nav-links a:hover { color: var(--gold); }
 
-        /* --- REDESIGNED TRADE FLOOR (Row based Table) --- */
-        .section-padding { padding: 80px 8%; }
-        .grid-header { text-align: center; margin-bottom: 50px; }
-        .grid-header h2 { font-size: 2.5rem; margin-bottom: 15px; }
-        
-        .trade-table-v2 { width: 100%; max-width: 900px; margin: 0 auto; border-collapse: separate; border-spacing: 0 15px; }
-        .trade-row-v2 { background: var(--card-bg); transition: 0.3s; cursor: pointer; }
-        .trade-row-v2:hover { transform: scale(1.02); box-shadow: 0 5px 20px rgba(255,215,0,0.1); }
-        .trade-row-v2 td { padding: 20px; border-top: 1px solid #333; border-bottom: 1px solid #333; }
-        .trade-row-v2 td:first-child { border-left: 1px solid #333; border-radius: 12px 0 0 12px; }
-        .trade-row-v2 td:last-child { border-right: 1px solid #333; border-radius: 0 12px 12px 0; text-align: right; }
-        
-        .icon-box { width: 50px; height: 50px; background: #222; border-radius: 10px; display: flex; align-items: center; justify-content: center; color: var(--primary); font-size: 22px; }
-        .card-name-v2 { font-size: 1.2rem; font-weight: 700; display: block; }
-        .card-sub-v2 { font-size: 0.8rem; color: #777; }
-        .rate-val-v2 { font-size: 1.5rem; font-weight: 900; color: #fff; }
-        .rate-tag-v2 { font-size: 0.7rem; color: var(--wa-green); font-weight: bold; background: rgba(37,211,102,0.1); padding: 2px 8px; border-radius: 4px; }
+        /* FLOOR 1: HERO */
+        .hero {
+            padding: 100px 8% 60px;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+        }
+        .hero-content { max-width: 600px; }
+        .hero-content h2 { color: var(--gold); font-size: 42px; margin-bottom: 10px; }
+        .hero-content h1 { font-size: 52px; line-height: 1.1; margin-bottom: 20px; }
+        .hero-content p { color: var(--text-gray); font-size: 18px; margin-bottom: 35px; }
+        .hero-image img { width: 100%; max-width: 500px; }
 
-        /* Calculator Floor */
-        .calculator-v2 { max-width: 600px; margin: 40px auto; background: var(--card-bg); padding: 30px; border-radius: 15px; border: 1px solid #333; }
-        .calculator-v2 select, .calculator-v2 input { width: 100%; padding: 15px; margin-bottom: 20px; background: #000; border: 1px solid #444; color: #fff; border-radius: 8px; }
+        /* FLOOR 2: STATS */
+        .stats-section {
+            padding: 60px 8%;
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 20px;
+            text-align: center;
+        }
+        .stat-box h3 { color: var(--gold); font-size: 36px; margin-bottom: 5px; }
+        .stat-box p { font-size: 14px; color: var(--text-gray); }
 
-        /* REVIEWS FLOOR */
-        .review-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 30px; }
-        .review-card { background: var(--card-bg); padding: 30px; border-radius: 20px; border: 1px solid #222; }
+        /* FLOOR 3: INFO BLOCKS */
+        .info-grid {
+            padding: 60px 8%;
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 30px;
+        }
+        .info-card { background: var(--gray); padding: 40px; border-radius: 15px; transition: 0.3s; }
+        .info-card:hover { transform: translateY(-10px); }
+        .info-card i { color: var(--gold); font-size: 30px; margin-bottom: 20px; }
+        .info-card h4 { font-size: 22px; margin-bottom: 15px; }
+        .info-card p { color: var(--text-gray); }
 
-        /* --- FOOTER & FLOATING --- */
-        footer { padding: 60px 8%; background: #000; text-align: center; border-top: 1px solid #222; }
+        /* FLOOR 4: CALCULATOR */
+        .calc-section { padding: 80px 8%; text-align: center; background: #080808; }
+        .calc-container { max-width: 600px; margin: 40px auto; background: var(--gray); padding: 40px; border-radius: 20px; }
+        .calc-input-group { margin-bottom: 25px; text-align: left; }
+        .calc-input-group label { display: block; margin-bottom: 10px; color: var(--text-gray); }
+        .calc-input-group select, .calc-input-group input { 
+            width: 100%; padding: 15px; background: #000; border: 1px solid #333; color: #fff; border-radius: 10px; 
+        }
+        .calc-result { margin-top: 30px; font-size: 24px; font-weight: bold; }
+        .btn-gold { 
+            background: var(--gold); color: #000; padding: 15px 40px; 
+            border-radius: 10px; font-weight: bold; display: inline-block; 
+            margin-top: 20px; transition: 0.3s;
+        }
+        .btn-gold:hover { background: #fff; transform: scale(1.05); }
+
+        /* FLOOR 5: RATES TABLE (Trade Component) */
+        .rates-section { padding: 80px 8%; }
+        .rates-table { width: 100%; border-collapse: collapse; margin-top: 40px; }
+        .rates-table th { text-align: left; padding: 20px; border-bottom: 1px solid #333; color: var(--text-gray); font-size: 14px; }
+        .rates-table td { padding: 25px 20px; border-bottom: 1px solid #111; }
+        .rates-table tr:hover { background: #0a0a0a; }
+        .rate-tag { background: rgba(255, 215, 0, 0.1); color: var(--gold); padding: 5px 12px; border-radius: 5px; font-size: 12px; font-weight: bold; }
+
+        /* FLOOR 6: REVIEWS */
+        .reviews-section { padding: 80px 8%; text-align: center; }
+        .reviews-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 30px; margin-top: 50px; }
+        .review-box { background: var(--gray); padding: 40px; border-radius: 15px; text-align: left; position: relative; }
+        .review-box::before { content: "\201C"; font-size: 80px; color: #333; position: absolute; top: 10px; left: 20px; }
+        .review-box p { font-style: italic; color: #ccc; margin-bottom: 20px; position: relative; z-index: 1; }
+        .review-author { color: var(--gold); font-weight: bold; }
+
+        /* FOOTER */
+        footer { padding: 60px 8%; background: #050505; text-align: center; border-top: 1px solid #222; }
         .wa-float {
-            position: fixed; bottom: 30px; right: 30px; background: var(--wa-green); color: white; padding: 15px 25px; border-radius: 50px; display: flex; align-items: center; gap: 12px; font-weight: bold; text-decoration: none; box-shadow: 0 10px 30px rgba(0,0,0,0.5); z-index: 99999;
+            position: fixed; bottom: 30px; right: 30px; background: var(--green);
+            color: white; padding: 15px 30px; border-radius: 50px;
+            display: flex; align-items: center; gap: 10px; font-weight: bold;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.5); z-index: 10000;
         }
 
-        @media (max-width: 968px) {
-            .hero { grid-template-columns: 1fr; text-align: center; }
-            .hero-title h1 { font-size: 2.8rem; }
-            .hero-img { display: none; }
+        @media (max-width: 768px) {
+            .hero { flex-direction: column; text-align: center; padding-top: 50px; }
+            .hero-image { display: none; }
+            .stats-section { grid-template-columns: 1fr; }
             .nav-links { display: none; }
-            .mobile-menu-icon { display: block; }
         }
     </style>
 </head>
 <body>
 
-    <header class="site-header">
-        <a href="#" class="logo-box">
-            <div class="logo-icon"><i class="fas fa-coins"></i></div>
-            <div class="logo-text">PRST<span>MIT</span></div>
-        </a>
+    <header>
+        <div class="logo">PRST<span>MIT</span></div>
         <nav class="nav-links">
-            <a href="#rates">Daily Rates</a>
+            <a href="#about">About</a>
+            <a href="#calculator">Calculator</a>
+            <a href="#rates">High Rates</a>
             <a href="#reviews">Reviews</a>
         </nav>
-        <div class="header-right">
-            <a href="https://wa.me/85266431798" class="header-cta">Contact Us</a>
-        </div>
     </header>
 
-    <section class="hero">
-        <div class="hero-title">
-            <h1>Turn Your <span>Gift Cards</span> Into Instant Cash</h1>
-            <p>Competitive rates and 24/7 response. Sell your gift cards securely with Prstmit™.</p>
+    <!-- FLOOR 1: Sell Gift Card -->
+    <section class="hero" id="about">
+        <div class="hero-content">
+            <h2>Sell Gift Card</h2>
+            <h1>Easy & Fast with Prstmit™</h1>
+            <p>Prstmit is your trusted partner for selling gift cards online. Turn your gift cards into cash quickly and securely. Sell your gift cards today!</p>
+            <a href="https://wa.me/85266431798" class="btn-gold">Contact us anytime</a>
         </div>
-        <div class="hero-img">
-            <img src="https://cdni.iconscout.com/illustration/premium/thumb/online-shopping-on-smartphone-illustration-download-in-svg-png-gif-formats--ecommerce-mobile-shop-store-pack-e-commerce-illustrations-4045548.png" alt="Trade">
+        <div class="hero-image">
+            <img src="https://cdni.iconscout.com/illustration/premium/thumb/successful-payment-illustration-download-in-svg-png-gif-formats--transaction-completed-billing-invoice-business-activity-pack-people-illustrations-4739190.png" alt="Hero">
         </div>
     </section>
 
-    <!-- STATS -->
-    <section class="stats-bar">
-        <div class="stat-item"><h2>30+</h2><p>Cards/Day</p></div>
-        <div class="stat-item"><h2>100K+</h2><p>Users Served</p></div>
+    <!-- FLOOR 2: Stats -->
+    <section class="stats-section">
+        <div class="stat-box"><h3>30</h3><p>Cards Processed Per Day</p></div>
+        <div class="stat-box"><h3>10</h3><p>Transaction Per Day</p></div>
+        <div class="stat-box"><h3>20</h3><p>Customers Per Year</p></div>
     </section>
 
-    <!-- REDESIGNED TRADE FLOOR -->
-    <section class="section-padding" id="rates">
-        <div class="grid-header"><h2>Daily Premium Rates</h2><p>Our top exchange rates for today.</p></div>
-        
-        <table class="trade-table-v2">
-            <tr class="trade-row-v2" onclick="location.href='https://wa.me/85266431798'">
-                <td><div class="icon-box"><i class="fas fa-credit-card"></i></div></td>
-                <td><span class="card-name-v2">Vanilla Visa</span><span class="card-sub-v2">USA [300-500]</span></td>
-                <td><span class="rate-val-v2">1,327</span><br><span class="rate-tag-v2">BEST RATE</span></td>
-            </tr>
-            <tr class="trade-row-v2" onclick="location.href='https://wa.me/85266431798'">
-                <td><div class="icon-box"><i class="fab fa-steam"></i></div></td>
-                <td><span class="card-name-v2">Steam Card</span><span class="card-sub-v2">Global Premium</span></td>
-                <td><span class="rate-val-v2">1,213</span><br><span class="rate-tag-v2">STABLE</span></td>
-            </tr>
-            <tr class="trade-row-v2" onclick="location.href='https://wa.me/85266431798'">
-                <td><div class="icon-box"><i class="fab fa-xbox"></i></div></td>
-                <td><span class="card-name-v2">Xbox Card</span><span class="card-sub-v2">USA / UK Digital</span></td>
-                <td><span class="rate-val-v2">1,315</span><br><span class="rate-tag-v2">HIGH</span></td>
-            </tr>
+    <!-- FLOOR 3: Info Blocks -->
+    <section class="info-grid">
+        <div class="info-card">
+            <i class="fas fa-paper-plane"></i>
+            <h4>Send Money</h4>
+            <p>Fast Payment Via Bank Transfer</p>
+        </div>
+        <div class="info-card">
+            <i class="fas fa-chart-line"></i>
+            <h4>Exchange rate trading</h4>
+            <p>Exchange rate calculator calculates real-time exchange rates for transactions</p>
+        </div>
+        <div class="info-card">
+            <i class="fas fa-comments"></i>
+            <h4>Whatsapp</h4>
+            <p>24/7 customer service online</p>
+        </div>
+    </section>
+
+    <!-- FLOOR 4: Calculator -->
+    <section class="calc-section" id="calculator">
+        <h2>Gift Card Rate Calculator</h2>
+        <p style="color:var(--text-gray); margin-top:10px;">Select card type and enter value to get approxinate rate.</p>
+        <div class="calc-container">
+            <div class="calc-input-group">
+                <label>Gift Card Type</label>
+                <select id="cardType">
+                    <option value="1327">Vanilla Visa (USA)</option>
+                    <option value="1213">Steam Card (USA)</option>
+                    <option value="1315">Xbox Card (UK)</option>
+                </select>
+            </div>
+            <div class="calc-input-group">
+                <label>Amount ($)</label>
+                <input type="number" id="cardAmount" value="100">
+            </div>
+            <div class="calc-result">
+                How much you would get: <br>
+                <span id="resultDisplay" style="color:var(--gold)">₦132,700</span>
+            </div>
+            <a href="https://wa.me/85266431798" class="btn-gold">Trade Now</a>
+        </div>
+    </section>
+
+    <!-- FLOOR 5: Top Gift Cards Rates Today -->
+    <section class="rates-section" id="rates">
+        <h2 style="text-align: center; font-size: 32px;">Top Gift Cards Rates Today</h2>
+        <table class="rates-table">
+            <thead>
+                <tr>
+                    <th>Type</th>
+                    <th>Region</th>
+                    <th>Value</th>
+                    <th>Rate</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr><td>Vanilla Visa</td><td>USA</td><td>300-500</td><td><span class="rate-tag">NGN 1,327</span></td></tr>
+                <tr><td>Xbox Card</td><td>UK</td><td>100+</td><td><span class="rate-tag">NGN 1,315</span></td></tr>
+                <tr><td>Steam Card</td><td>EUR</td><td>100-500</td><td><span class="rate-tag">NGN 1,270</span></td></tr>
+                <tr><td>Amazon Card</td><td>USA</td><td>All</td><td><span class="rate-tag">NGN 1,150</span></td></tr>
+            </tbody>
         </table>
+    </section>
 
-        <div class="calculator-v2">
-            <h3 style="margin-bottom:15px; color:var(--primary)">Instant Quote</h3>
-            <select id="t"><option value="1327">Vanilla Visa</option><option value="1213">Steam Card</option></select>
-            <input type="number" id="v" value="100">
-            <p style="text-align:center; font-size:1.4rem; font-weight:bold; color:var(--primary)">Expect: <span id="r">NGN 132,700</span></p>
+    <!-- FLOOR 6: Reviews -->
+    <section class="reviews-section" id="reviews">
+        <h2 style="font-size: 32px;">Reviews from our clients</h2>
+        <div class="reviews-grid">
+            <div class="review-box">
+                <p>"The company is doing so well trades are fast no delay rate are massive and sweet, Keep the Good work!"</p>
+                <div class="review-author">Henrycavill Private</div>
+            </div>
+            <div class="review-box">
+                <p>"They are Truly fast and amazing rate. Trusted and they respect and value their customers 100!"</p>
+                <div class="review-author">Tommy Tom</div>
+            </div>
         </div>
     </section>
 
-    <!-- REVIEWS -->
-    <section class="section-padding" id="reviews">
-        <div class="grid-header"><h2>Client Feedback</h2></div>
-        <div class="review-grid">
-            <div class="review-card"><strong>Henry</strong><p>"Fastest payout ever. No delays!"</p></div>
-            <div class="review-card"><strong>Sara Smith</strong><p>"Great respect for customers. Seamless!"</p></div>
-        </div>
-    </section>
+    <!-- FOOTER -->
+    <footer>
+        <h2 style="margin-bottom: 20px;">Try Prstmit today for higher profits!</h2>
+        <p style="color:var(--text-gray);">Contact us anytime for professional and swift service.</p>
+        <p style="margin-top: 30px; font-size: 12px; color: #444;">&copy; 2026 Prstmit™. All Rights Reserved.</p>
+    </footer>
 
-    <footer><p>&copy; 2026 Prstmit™ Trading Platform.</p></footer>
-
-    <a href="https://wa.me/85266431798" class="wa-float"><i class="fab fa-whatsapp"></i> Chat with Expert</a>
+    <!-- WhatsApp Entry -->
+    <a href="https://wa.me/85266431798" class="wa-float">
+        <i class="fab fa-whatsapp"></i> Chat with Expert
+    </a>
 
     <script>
-        const t=document.getElementById('t'),v=document.getElementById('v'),r=document.getElementById('r');
-        function c(){r.innerText='NGN '+(parseInt(t.value)*(parseInt(v.value)||0)).toLocaleString();}
-        t.onchange=c;v.oninput=c;
+        const cardType = document.getElementById('cardType');
+        const cardAmount = document.getElementById('cardAmount');
+        const resultDisplay = document.getElementById('resultDisplay');
+
+        function update() {
+            const res = parseInt(cardType.value) * (parseInt(cardAmount.value) || 0);
+            resultDisplay.innerText = '₦' + res.toLocaleString();
+        }
+
+        cardType.addEventListener('change', update);
+        cardAmount.addEventListener('input', update);
     </script>
 </body>
 </html>
