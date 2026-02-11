@@ -83,8 +83,88 @@
             font-weight: 600;
         }
 
-        @media (max-width: 768px) {
-            .nav-links { display: none; }
+        /* --- TRADE/RATES COMPONENT --- */
+        .trade-section {
+            padding: 40px 5%;
+            background: #080808;
+        }
+        .section-header {
+            text-align: center;
+            margin-bottom: 30px;
+        }
+        .section-header h2 {
+            font-size: 1.8rem;
+            color: var(--primary);
+        }
+        .trade-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 20px;
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+        .trade-card {
+            background: var(--card-bg);
+            border-radius: 12px;
+            padding: 20px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            border: 1px solid #222;
+            transition: 0.3s;
+        }
+        .trade-card:hover {
+            border-color: var(--primary);
+            transform: translateY(-3px);
+        }
+        .card-info {
+            display: flex;
+            align-items: center;
+            gap: 15px;
+        }
+        .card-icon {
+            width: 45px;
+            height: 45px;
+            background: #1a1a1a;
+            border-radius: 8px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: var(--primary);
+            font-size: 20px;
+        }
+        .card-details h4 {
+            font-size: 1rem;
+            margin-bottom: 4px;
+        }
+        .card-details p {
+            font-size: 0.8rem;
+            color: #666;
+        }
+        .card-price {
+            text-align: right;
+        }
+        .rate-value {
+            display: block;
+            font-size: 1.2rem;
+            font-weight: 800;
+            color: #fff;
+        }
+        .rate-label {
+            font-size: 0.7rem;
+            color: var(--wa-green);
+            text-transform: uppercase;
+        }
+        .btn-mini-trade {
+            margin-top: 8px;
+            display: inline-block;
+            font-size: 0.75rem;
+            padding: 4px 12px;
+            background: var(--primary);
+            color: #000;
+            text-decoration: none;
+            border-radius: 4px;
+            font-weight: bold;
         }
 
         /* --- 内容区域 --- */
@@ -178,6 +258,82 @@
             <a href="https://wa.me/85266431798" class="trade-btn-main" style="width:100%; display:inline-block; text-align:center;">
                 START TRADE
             </a>
+        </div>
+    </section>
+
+    <!-- NEW TRADE COMPONENT (RATES LIST) -->
+    <section class="trade-section" id="rates">
+        <div class="section-header">
+            <h2>Top Gift Cards Rates Today</h2>
+        </div>
+        <div class="trade-grid">
+            <!-- Vanilla -->
+            <div class="trade-card">
+                <div class="card-info">
+                    <div class="card-icon"><i class="fas fa-credit-card"></i></div>
+                    <div class="card-details">
+                        <h4>Vanilla Visa</h4>
+                        <p>USA [300-500]</p>
+                    </div>
+                </div>
+                <div class="card-price">
+                    <span class="rate-value">NGN 1,327</span>
+                    <span class="rate-label">Live Rate</span>
+                    <br>
+                    <a href="https://wa.me/85266431798?text=Trade%20Vanilla%20Visa" class="btn-mini-trade">Trade</a>
+                </div>
+            </div>
+
+            <!-- Xbox -->
+            <div class="trade-card">
+                <div class="card-info">
+                    <div class="card-icon"><i class="fab fa-xbox"></i></div>
+                    <div class="card-details">
+                        <h4>Xbox Card</h4>
+                        <p>UK / Global</p>
+                    </div>
+                </div>
+                <div class="card-price">
+                    <span class="rate-value">NGN 1,315</span>
+                    <span class="rate-label">Live Rate</span>
+                    <br>
+                    <a href="https://wa.me/85266431798?text=Trade%20Xbox%20Card" class="btn-mini-trade">Trade</a>
+                </div>
+            </div>
+
+            <!-- Steam -->
+            <div class="trade-card">
+                <div class="card-info">
+                    <div class="card-icon"><i class="fab fa-steam"></i></div>
+                    <div class="card-details">
+                        <h4>Steam Card</h4>
+                        <p>EUR / USD</p>
+                    </div>
+                </div>
+                <div class="card-price">
+                    <span class="rate-value">NGN 1,213</span>
+                    <span class="rate-label">Live Rate</span>
+                    <br>
+                    <a href="https://wa.me/85266431798?text=Trade%20Steam%20Card" class="btn-mini-trade">Trade</a>
+                </div>
+            </div>
+
+            <!-- Apple -->
+            <div class="trade-card">
+                <div class="card-info">
+                    <div class="card-icon"><i class="fab fa-apple"></i></div>
+                    <div class="card-details">
+                        <h4>Apple / iTunes</h4>
+                        <p>Global [100+]</p>
+                    </div>
+                </div>
+                <div class="card-price">
+                    <span class="rate-value">NGN 1,250</span>
+                    <span class="rate-label">Live Rate</span>
+                    <br>
+                    <a href="https://wa.me/85266431798?text=Trade%20Apple%20Card" class="btn-mini-trade">Trade</a>
+                </div>
+            </div>
         </div>
     </section>
 
