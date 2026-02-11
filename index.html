@@ -25,7 +25,7 @@
 
         /* --- STICKY NAVIGATION --- */
         .site-header {
-            background: rgba(10, 10, 10, 0.9);
+            background: rgba(10, 10, 10, 0.95);
             backdrop-filter: blur(10px);
             padding: 15px 8%;
             display: flex;
@@ -34,22 +34,64 @@
             position: sticky;
             top: 0;
             z-index: 10000;
-            border-bottom: 1px solid #222;
+            border-bottom: 1px solid #333;
         }
-        .logo { 
-            display: flex; 
-            align-items: center; 
-            gap: 10px; 
-            text-decoration: none; 
-            font-size: 22px; 
-            font-weight: 900; 
+        
+        .logo-box {
+            display: flex;
+            align-items: center;
+            gap: 12px;
+            text-decoration: none;
+        }
+
+        .logo-icon {
+            background: linear-gradient(135deg, var(--primary), #FFC107);
+            width: 40px;
+            height: 40px;
+            border-radius: 8px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            box-shadow: 0 0 15px rgba(255, 215, 0, 0.3);
+        }
+
+        .logo-icon i { color: #000; font-size: 20px; }
+
+        .logo-text {
+            font-size: 24px;
+            font-weight: 900;
+            letter-spacing: -0.5px;
             color: #fff;
+            text-transform: uppercase;
         }
-        .logo span { color: var(--primary); }
-        .nav-links { display: flex; gap: 25px; align-items: center; }
-        .nav-links a { color: #fff; text-decoration: none; font-size: 14px; font-weight: 500; transition: 0.3s; }
+
+        .logo-text span { color: var(--primary); }
+
+        .nav-links { display: flex; gap: 30px; align-items: center; }
+        .nav-links a { 
+            color: #fff; 
+            text-decoration: none; 
+            font-size: 14px; 
+            font-weight: 600; 
+            transition: 0.3s; 
+            text-transform: uppercase;
+        }
+        
         .nav-links a:hover { color: var(--primary); }
-        .mobile-menu-icon { display: none; font-size: 24px; cursor: pointer; }
+
+        .header-cta {
+            background: var(--primary);
+            color: #000 !important;
+            padding: 10px 24px;
+            border-radius: 6px;
+            font-weight: 800;
+            text-decoration: none;
+            transition: 0.3s;
+        }
+        
+        .header-cta:hover { background: #fff; transform: scale(1.05); }
+
+        .mobile-menu-icon { display: none; font-size: 24px; cursor: pointer; color: var(--primary); }
 
         /* --- HERO SECTION --- */
         .hero {
@@ -171,15 +213,19 @@
 <body>
 
     <header class="site-header">
-        <a href="#" class="logo"><i class="fas fa-bolt" style="color:var(--primary)"></i> PRST<span>MIT</span></a>
+        <a href="#" class="logo-box">
+            <div class="logo-icon">
+                <i class="fas fa-coins"></i>
+            </div>
+            <div class="logo-text">PRST<span>MIT</span></div>
+        </a>
         <nav class="nav-links">
-            <a href="#about">About</a>
             <a href="#calculator">Calculator</a>
             <a href="#rates">Daily Rates</a>
             <a href="#reviews">Reviews</a>
-            <a href="https://wa.me/85266431798" class="btn-gold" style="padding: 10px 20px;">Trade Now</a>
+            <a href="https://wa.me/85266431798" class="header-cta">Contact Us</a>
         </nav>
-        <div class="mobile-menu-icon"><i class="fas fa-bars"></i></div>
+        <div class="mobile-menu-icon" style="display:block;"><i class="fas fa-bars"></i></div>
     </header>
 
     <!-- SECTION 1: HERO -->
