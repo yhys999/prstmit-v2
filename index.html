@@ -4,7 +4,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
     <title>Prstmit - Leading Gift Card Exchange Platform</title>
-    <!-- 强制引入 FontAwesome 用于图标显示 -->
+    <!-- 强制引入静态图标库 -->
     <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" rel="stylesheet">
     <style>
         :root {
@@ -14,344 +14,186 @@
             --wa-green: #25D366;
         }
 
-        * { margin: 0; padding: 0; box-sizing: border-box; scroll-behavior: smooth; }
+        * { margin: 0; padding: 0; box-sizing: border-box; }
         body {
             font-family: 'Inter', -apple-system, sans-serif;
             background-color: var(--dark-bg);
             color: #fff;
-            overflow-x: hidden;
-            padding-top: 70px; /* 为固定头部留出空间 */
+            padding-bottom: 100px;
         }
 
-        /* --- 极简固定头部，确保两端对齐 --- */
+        /* --- 固定导航 --- */
         .site-header {
             position: fixed;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 70px;
+            top: 0; width: 100%; height: 70px;
             background: #000;
-            display: flex;
-            align-items: center;
-            justify-content: space-between;
-            padding: 0 5%;
-            z-index: 10000;
-            border-bottom: 2px solid #333;
+            display: flex; align-items: center; justify-content: space-between;
+            padding: 0 5%; z-index: 99999; border-bottom: 2px solid #222;
+        }
+        .logo { font-size: 20px; font-weight: 900; color: #fff; text-decoration: none; }
+        .logo span { color: var(--primary); }
+        .trade-top-btn {
+            background: var(--primary); color: #000; padding: 8px 16px;
+            border-radius: 4px; font-weight: bold; text-decoration: none; font-size: 13px;
         }
 
-        .logo-box {
-            display: flex;
-            align-items: center;
-            text-decoration: none;
-            color: #fff;
-            font-weight: 900;
-            font-size: 20px;
-        }
-        .logo-box span { color: var(--primary); margin-left: 2px; }
+        /* --- 主屏区域 --- */
+        .hero { padding: 100px 5% 40px; text-align: center; }
+        .hero h1 { font-size: 2.5rem; line-height: 1.2; margin-bottom: 10px; }
+        .hero h1 span { color: var(--primary); }
 
-        /* 右侧操作区 - 强制显示 */
-        .header-actions {
-            display: flex;
-            align-items: center;
-            gap: 15px;
-        }
-
-        /* 核心按钮 - 重新设计确保可见性 */
-        .trade-btn-main {
-            background: var(--primary) !important;
-            color: #000 !important;
-            padding: 10px 20px !important;
-            border-radius: 4px !important;
-            text-decoration: none !important;
-            font-weight: 800 !important;
-            font-size: 14px !important;
-            display: block !important; /* 强制显示 */
-            visibility: visible !important;
-            box-shadow: 0 2px 10px rgba(255,215,0,0.3);
-            white-space: nowrap;
-        }
-
-        /* 中部导航 - 在小屏幕下隐藏 */
-        .nav-links {
-            display: flex;
-            gap: 20px;
-        }
-        .nav-links a {
-            color: #ccc;
-            text-decoration: none;
-            font-size: 14px;
-            font-weight: 600;
-        }
-
-        /* --- TRADE/RATES COMPONENT --- */
-        .trade-section {
-            padding: 40px 5%;
-            background: #080808;
-        }
-        .section-header {
-            text-align: center;
-            margin-bottom: 30px;
-        }
-        .section-header h2 {
-            font-size: 1.8rem;
-            color: var(--primary);
-        }
-        .trade-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-            gap: 20px;
+        /* --- 核心 TRADE 组件 (采用纯静态块实现) --- */
+        .trade-container {
+            padding: 20px 5%;
             max-width: 1200px;
             margin: 0 auto;
         }
-        .trade-card {
-            background: var(--card-bg);
-            border-radius: 12px;
-            padding: 20px;
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-            border: 1px solid #222;
-            transition: 0.3s;
-        }
-        .trade-card:hover {
-            border-color: var(--primary);
-            transform: translateY(-3px);
-        }
-        .card-info {
-            display: flex;
-            align-items: center;
-            gap: 15px;
-        }
-        .card-icon {
-            width: 45px;
-            height: 45px;
-            background: #1a1a1a;
-            border-radius: 8px;
-            display: flex;
-            align-items: center;
-            justify-content: center;
+        .trade-title {
             color: var(--primary);
             font-size: 20px;
-        }
-        .card-details h4 {
-            font-size: 1rem;
-            margin-bottom: 4px;
-        }
-        .card-details p {
-            font-size: 0.8rem;
-            color: #666;
-        }
-        .card-price {
-            text-align: right;
-        }
-        .rate-value {
-            display: block;
-            font-size: 1.2rem;
             font-weight: 800;
-            color: #fff;
-        }
-        .rate-label {
-            font-size: 0.7rem;
-            color: var(--wa-green);
-            text-transform: uppercase;
-        }
-        .btn-mini-trade {
-            margin-top: 8px;
-            display: inline-block;
-            font-size: 0.75rem;
-            padding: 4px 12px;
-            background: var(--primary);
-            color: #000;
-            text-decoration: none;
-            border-radius: 4px;
-            font-weight: bold;
-        }
-
-        /* --- 内容区域 --- */
-        .hero {
-            padding: 80px 5%;
+            margin-bottom: 20px;
             text-align: center;
+            text-transform: uppercase;
+            border-left: 4px solid var(--primary);
+            padding-left: 10px;
+            display: inline-block;
         }
-        .hero h1 { font-size: 3rem; margin-bottom: 20px; }
-        .hero h1 span { color: var(--primary); }
-
-        .calculator-area {
-            max-width: 500px;
-            margin: 40px auto;
-            background: var(--card-bg);
-            padding: 30px;
+        
+        /* 静态行情卡片 */
+        .rate-card {
+            background: #1a1a1a;
             border-radius: 12px;
-            border: 1px solid #333;
-        }
-        .input-box { margin-bottom: 20px; text-align: left; }
-        .input-box label { display: block; margin-bottom: 8px; color: #888; }
-        .input-box select, .input-box input {
-            width: 100%; padding: 12px; background: #000; border: 1px solid #444; color: #fff; border-radius: 6px;
-        }
-
-        .result-display {
-            font-size: 1.5rem;
-            color: var(--primary);
-            margin: 20px 0;
-            font-weight: bold;
-        }
-
-        /* 悬浮 WhatsApp */
-        .wa-float {
-            position: fixed;
-            bottom: 30px;
-            right: 30px;
-            background: var(--wa-green);
-            color: white;
-            padding: 15px 25px;
-            border-radius: 50px;
-            text-decoration: none;
-            font-weight: bold;
+            padding: 20px;
+            margin-bottom: 15px;
             display: flex;
             align-items: center;
-            gap: 10px;
-            z-index: 10000;
-            box-shadow: 0 5px 20px rgba(0,0,0,0.5);
+            justify-content: space-between;
+            border-bottom: 3px solid #333; /* 增加视觉厚度确保显示 */
+        }
+        .card-left { display: flex; align-items: center; gap: 15px; }
+        .card-icon { 
+            width: 50px; height: 50px; background: #333; 
+            border-radius: 50%; display: flex; align-items: center; justify-content: center;
+            color: var(--primary); font-size: 24px;
+        }
+        .card-meta h4 { font-size: 16px; margin-bottom: 2px; }
+        .card-meta p { color: #888; font-size: 12px; }
+
+        .card-right { text-align: right; }
+        .rate-value { display: block; font-size: 18px; font-weight: 800; color: #fff; }
+        .rate-tag { font-size: 10px; color: var(--wa-green); font-weight: bold; }
+        
+        .btn-trade-inner {
+            display: inline-block;
+            margin-top: 8px;
+            background: var(--primary);
+            color: #000;
+            padding: 5px 15px;
+            border-radius: 4px;
+            text-decoration: none;
+            font-weight: bold;
+            font-size: 12px;
+        }
+
+        /* --- 计算器区域 --- */
+        .calc-box {
+            background: #111; padding: 30px; border-radius: 15px; margin-top: 40px; border: 1px solid #222;
+        }
+        .calc-box input, .calc-box select {
+            width: 100%; padding: 12px; margin: 10px 0; background: #000; border: 1px solid #444; color: #fff; border-radius: 8px;
+        }
+
+        /* --- 悬浮客服 --- */
+        .wa-float {
+            position: fixed; bottom: 20px; right: 20px;
+            background: var(--wa-green); color: #fff; padding: 12px 20px;
+            border-radius: 50px; font-weight: bold; text-decoration: none;
+            display: flex; align-items: center; gap: 8px; z-index: 100000;
+            box-shadow: 0 4px 15px rgba(0,0,0,0.5);
         }
     </style>
 </head>
 <body>
 
     <header class="site-header">
-        <a href="/" class="logo-box">
-            <i class="fas fa-bolt" style="color:var(--primary); margin-right: 8px;"></i>
-            PRST<span>MIT</span>
-        </a>
-
-        <div class="nav-links">
-            <a href="#about">About</a>
-            <a href="#rates">Rates</a>
-        </div>
-
-        <div class="header-actions">
-            <!-- 重新用最基础的 A 标签实现 Trade 按钮 -->
-            <a href="https://wa.me/85266431798" class="trade-btn-main" id="trade-cta">
-                TRADE NOW
-            </a>
-        </div>
+        <a href="#" class="logo">PRST<span>MIT</span></a>
+        <a href="https://wa.me/85266431798" class="trade-top-btn">TRADE NOW</a>
     </header>
 
-    <section class="hero" id="about">
-        <h1>Sell <span>Gift Cards</span><br>Fast & Secure</h1>
-        <p style="color:#888; margin-bottom: 40px;">Professional exchange service with the best rates in the market.</p>
+    <div class="hero">
+        <h1>Sell <span>Gift Cards</span><br>Get Instant Cash</h1>
+    </div>
+
+    <!-- 强制显示的 TRADE 核心组件 -->
+    <div class="trade-container">
+        <div style="text-align:center;"><span class="trade-title">Top Gift Cards Rates Today</span></div>
         
-        <div class="calculator-area">
-            <h3>Rate Calculator</h3>
-            <div class="input-box">
-                <label>Gift Card Type</label>
-                <select id="cardType">
-                    <option value="1300">Vanilla Visa (Highest Rate)</option>
-                    <option value="1200">Steam Card</option>
-                    <option value="1250">Apple / iTunes</option>
-                </select>
-            </div>
-            <div class="input-box">
-                <label>Face Value ($)</label>
-                <input type="number" id="cardValue" value="100">
-            </div>
-            <div class="result-display" id="res">NGN 130,000</div>
-            <a href="https://wa.me/85266431798" class="trade-btn-main" style="width:100%; display:inline-block; text-align:center;">
-                START TRADE
-            </a>
-        </div>
-    </section>
-
-    <!-- NEW TRADE COMPONENT (RATES LIST) -->
-    <section class="trade-section" id="rates">
-        <div class="section-header">
-            <h2>Top Gift Cards Rates Today</h2>
-        </div>
-        <div class="trade-grid">
-            <!-- Vanilla -->
-            <div class="trade-card">
-                <div class="card-info">
-                    <div class="card-icon"><i class="fas fa-credit-card"></i></div>
-                    <div class="card-details">
-                        <h4>Vanilla Visa</h4>
-                        <p>USA [300-500]</p>
-                    </div>
-                </div>
-                <div class="card-price">
-                    <span class="rate-value">NGN 1,327</span>
-                    <span class="rate-label">Live Rate</span>
-                    <br>
-                    <a href="https://wa.me/85266431798?text=Trade%20Vanilla%20Visa" class="btn-mini-trade">Trade</a>
+        <!-- 卡片 1 -->
+        <div class="rate-card">
+            <div class="card-left">
+                <div class="card-icon"><i class="fas fa-credit-card"></i></div>
+                <div class="card-meta">
+                    <h4>Vanilla Visa</h4>
+                    <p>USA [300-500]</p>
                 </div>
             </div>
-
-            <!-- Xbox -->
-            <div class="trade-card">
-                <div class="card-info">
-                    <div class="card-icon"><i class="fab fa-xbox"></i></div>
-                    <div class="card-details">
-                        <h4>Xbox Card</h4>
-                        <p>UK / Global</p>
-                    </div>
-                </div>
-                <div class="card-price">
-                    <span class="rate-value">NGN 1,315</span>
-                    <span class="rate-label">Live Rate</span>
-                    <br>
-                    <a href="https://wa.me/85266431798?text=Trade%20Xbox%20Card" class="btn-mini-trade">Trade</a>
-                </div>
-            </div>
-
-            <!-- Steam -->
-            <div class="trade-card">
-                <div class="card-info">
-                    <div class="card-icon"><i class="fab fa-steam"></i></div>
-                    <div class="card-details">
-                        <h4>Steam Card</h4>
-                        <p>EUR / USD</p>
-                    </div>
-                </div>
-                <div class="card-price">
-                    <span class="rate-value">NGN 1,213</span>
-                    <span class="rate-label">Live Rate</span>
-                    <br>
-                    <a href="https://wa.me/85266431798?text=Trade%20Steam%20Card" class="btn-mini-trade">Trade</a>
-                </div>
-            </div>
-
-            <!-- Apple -->
-            <div class="trade-card">
-                <div class="card-info">
-                    <div class="card-icon"><i class="fab fa-apple"></i></div>
-                    <div class="card-details">
-                        <h4>Apple / iTunes</h4>
-                        <p>Global [100+]</p>
-                    </div>
-                </div>
-                <div class="card-price">
-                    <span class="rate-value">NGN 1,250</span>
-                    <span class="rate-label">Live Rate</span>
-                    <br>
-                    <a href="https://wa.me/85266431798?text=Trade%20Apple%20Card" class="btn-mini-trade">Trade</a>
-                </div>
+            <div class="card-right">
+                <span class="rate-value">NGN 1,327</span>
+                <span class="rate-tag">TOP RATE</span><br>
+                <a href="https://wa.me/85266431798" class="btn-trade-inner">Trade</a>
             </div>
         </div>
-    </section>
 
-    <!-- 浮动客服 -->
+        <!-- 卡片 2 -->
+        <div class="rate-card">
+            <div class="card-left">
+                <div class="card-icon"><i class="fab fa-steam"></i></div>
+                <div class="card-meta">
+                    <h4>Steam Card</h4>
+                    <p>EURO / UK</p>
+                </div>
+            </div>
+            <div class="card-right">
+                <span class="rate-value">NGN 1,213</span>
+                <span class="rate-tag">STABLE</span><br>
+                <a href="https://wa.me/85266431798" class="btn-trade-inner">Trade</a>
+            </div>
+        </div>
+
+        <!-- 卡片 3 -->
+        <div class="rate-card">
+            <div class="card-left">
+                <div class="card-icon"><i class="fab fa-xbox"></i></div>
+                <div class="card-meta">
+                    <h4>Xbox Card</h4>
+                    <p>US / GLOBAL</p>
+                </div>
+            </div>
+            <div class="card-right">
+                <span class="rate-value">NGN 1,315</span>
+                <span class="rate-tag">HIGH</span><br>
+                <a href="https://wa.me/85266431798" class="btn-trade-inner">Trade</a>
+            </div>
+        </div>
+
+        <!-- 计算器静态版 -->
+        <div class="calc-box">
+            <h3 style="color:var(--primary); margin-bottom:15px;">Rate Calculator</h3>
+            <select id="t"><option value="1300">Vanilla Visa</option><option value="1200">Steam</option></select>
+            <input type="number" id="v" value="100" placeholder="Amount ($)">
+            <p style="margin-top:10px;">Expect: <span id="r" style="color:var(--primary); font-weight:bold; font-size:1.2rem;">NGN 130,000</span></p>
+        </div>
+    </div>
+
     <a href="https://wa.me/85266431798" class="wa-float">
-        <i class="fab fa-whatsapp"></i>
-        <span>Chat with Us</span>
+        <i class="fab fa-whatsapp"></i> Chat Now
     </a>
 
     <script>
-        const t = document.getElementById('cardType');
-        const v = document.getElementById('cardValue');
-        const r = document.getElementById('res');
-        function calc() {
-            r.innerText = 'NGN ' + (parseInt(t.value) * (parseInt(v.value) || 0)).toLocaleString();
-        }
-        t.addEventListener('change', calc);
-        v.addEventListener('input', calc);
+        const t=document.getElementById('t'),v=document.getElementById('v'),r=document.getElementById('r');
+        function c(){r.innerText='NGN '+(parseInt(t.value)*(parseInt(v.value)||0)).toLocaleString();}
+        t.onchange=c;v.oninput=c;
     </script>
 </body>
 </html>
