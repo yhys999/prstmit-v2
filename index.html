@@ -22,12 +22,87 @@
             line-height: 1.6;
         }
 
-        /* Hero Section with Human Presence */
+        /* --- New Brand Header & Logo Design --- */
+        .site-header {
+            background: rgba(15, 15, 15, 0.95);
+            backdrop-filter: blur(10px);
+            border-bottom: 1px solid #333;
+            padding: 15px 10%;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            position: sticky;
+            top: 0;
+            z-index: 10000;
+        }
+
+        .logo-box {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            text-decoration: none;
+        }
+
+        .logo-icon {
+            background: linear-gradient(135deg, var(--primary), var(--accent));
+            width: 40px;
+            height: 40px;
+            border-radius: 8px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            box-shadow: 0 0 15px rgba(255, 215, 0, 0.3);
+        }
+
+        .logo-icon i {
+            color: #000;
+            font-size: 20px;
+        }
+
+        .logo-text {
+            font-size: 24px;
+            font-weight: 900;
+            letter-spacing: -0.5px;
+            color: #fff;
+            text-transform: uppercase;
+        }
+
+        .logo-text span {
+            color: var(--primary);
+        }
+
+        .nav-links {
+            display: flex;
+            gap: 30px;
+            align-items: center;
+        }
+
+        .nav-links a {
+            color: #fff;
+            text-decoration: none;
+            font-size: 14px;
+            font-weight: 600;
+            transition: 0.3s;
+            text-transform: uppercase;
+        }
+
+        .nav-links a:hover {
+            color: var(--primary);
+        }
+
+        .header-cta {
+            background: var(--primary);
+            color: #000 !important;
+            padding: 8px 20px;
+            border-radius: 5px;
+        }
+
+        /* --- Hero Section Update --- */
         .hero {
             display: flex;
             align-items: center;
             justify-content: space-between;
-            padding: 100px 10% 60px;
+            padding: 60px 10% 60px; /* Reduced top padding due to sticky header */
             background: radial-gradient(circle at top right, #222, var(--dark-bg));
             flex-wrap: wrap;
         }
@@ -144,7 +219,22 @@
 </head>
 <body>
 
-    <header class="hero">
+    <!-- New Brand Header -->
+    <header class="site-header">
+        <a href="#" class="logo-box">
+            <div class="logo-icon">
+                <i class="fas fa-coins"></i>
+            </div>
+            <div class="logo-text">PRST<span>MIT</span></div>
+        </a>
+        <nav class="nav-links">
+            <a href="#rates">Rates</a>
+            <a href="#reviews">Reviews</a>
+            <a href="https://wa.me/85266431798" class="header-cta">Contact Us</a>
+        </nav>
+    </header>
+
+    <section class="hero">
         <div class="hero-text">
             <h1>Expert In Gift Cards Trading</h1>
             <p>Fast payment via bank transfer. Professional customer service available 24/7 to ensure your profits grow spontaneously.</p>
