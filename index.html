@@ -1,0 +1,323 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Prstmit | Premium Gift Card Exchange Nigeria</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;600;800&display=swap" rel="stylesheet">
+    <style>
+        body { font-family: 'Plus Jakarta Sans', sans-serif; background-color: #05080A; color: white; scroll-behavior: smooth; }
+        .glass { background: rgba(255, 255, 255, 0.03); backdrop-filter: blur(12px); border: 1px solid rgba(255, 255, 255, 0.08); }
+        .hero-gradient { background: radial-gradient(circle at top right, rgba(0, 217, 145, 0.1), transparent 50%); }
+        .card-hover:hover { transform: translateY(-8px); border-color: rgba(0, 217, 145, 0.5); transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275); }
+        .animate-scroll { animation: scroll 30s linear infinite; }
+        @keyframes scroll { 0% { transform: translateX(0); } 100% { transform: translateX(-50%); } }
+    </style>
+</head>
+<body class="overflow-x-hidden">
+
+    <!-- 0. Top Bar / Announcement -->
+    <div class="bg-[#00D991] text-black text-[10px] py-1.5 text-center font-black uppercase tracking-widest">
+        🔥 Flash: Vanilla Visa Rates just increased to 1,327 NGN/$
+    </div>
+
+    <!-- 1. Navbar -->
+    <nav class="sticky top-0 z-50 glass border-b border-white/5 px-6 py-4">
+        <div class="max-w-7xl mx-auto flex justify-between items-center">
+            <div class="text-xl md:text-2xl font-black tracking-tighter text-[#00D991]">PRSTMIT<span class="text-white">.VIP</span></div>
+            <div class="hidden lg:flex space-x-8 text-[11px] font-bold uppercase tracking-widest text-gray-400">
+                <a href="#rates" class="hover:text-white transition">Live Rates</a>
+                <a href="#how-it-works" class="hover:text-white transition">Procedure</a>
+                <a href="#features" class="hover:text-white transition">Services</a>
+                <a href="#about" class="hover:text-white transition">Trust</a>
+                <a href="#faq" class="hover:text-white transition">FAQ</a>
+            </div>
+            <div class="flex items-center space-x-4">
+                <a href="https://prstmit.vip/whatapp/whatsapplink" class="bg-[#00D991] text-black px-5 py-2.5 rounded-xl font-bold text-xs hover:scale-105 transition shadow-lg shadow-[#00D991]/20">Start Trading</a>
+            </div>
+        </div>
+    </nav>
+
+    <!-- 2. Hero + Calculator -->
+    <section class="relative px-6 py-12 md:py-24 hero-gradient">
+        <div class="max-w-7xl mx-auto grid lg:grid-cols-2 gap-20 items-center">
+            <div class="relative z-10">
+                <div class="inline-flex items-center space-x-2 bg-[#00D991]/10 px-4 py-2 rounded-full mb-8 border border-[#00D991]/20">
+                    <span class="text-[10px] font-black uppercase tracking-widest text-[#00D991]">Established Brand</span>
+                </div>
+                <h1 class="text-5xl md:text-7xl font-extrabold leading-[1.05] mb-8">
+                    Easy & Fast with <span class="text-transparent bg-clip-text bg-gradient-to-r from-[#00D991] to-emerald-400">Prstmit</span>
+                </h1>
+                <p class="text-gray-400 text-lg mb-10 max-w-lg leading-relaxed">
+                    Turning your gift cards into cash shouldn't be a struggle. We provide competitive rates and instant response, leading to spontaneous profit growth for customers.
+                </p>
+                <div class="flex flex-wrap gap-8">
+                    <div>
+                        <div class="text-3xl font-black">30+</div>
+                        <p class="text-[10px] text-gray-500 uppercase font-bold tracking-widest mt-1">Cards Daily</p>
+                    </div>
+                    <div class="w-px h-12 bg-white/10"></div>
+                    <div>
+                        <div class="text-3xl font-black text-[#00D991]">100K+</div>
+                        <p class="text-[10px] text-gray-500 uppercase font-bold tracking-widest mt-1">Global Users</p>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Enhanced Calculator -->
+            <div id="rates" class="glass p-8 md:p-10 rounded-[40px] relative border-[#00D991]/20 border shadow-2xl">
+                <div class="flex justify-between items-center mb-10">
+                    <h3 class="text-xl font-black">Quick Estimate</h3>
+                    <div class="flex space-x-1">
+                        <div class="w-1.5 h-1.5 rounded-full bg-[#00D991] animate-pulse"></div>
+                        <div class="w-1.5 h-1.5 rounded-full bg-[#00D991]/30"></div>
+                    </div>
+                </div>
+                <div class="space-y-6">
+                    <div>
+                        <label class="text-[10px] uppercase font-bold text-gray-500 mb-3 block space-x-1">Select Asset Type</label>
+                        <select class="w-full bg-white/5 border border-white/10 rounded-2xl px-5 py-4 outline-none focus:border-[#00D991] transition cursor-pointer">
+                            <option>Vanilla Visa [300-500]</option>
+                            <option>Steam Gift Card [EUR]</option>
+                            <option>Xbox [UK] / Razer Gold</option>
+                            <option>Apple iTunes [USD]</option>
+                        </select>
+                    </div>
+                    <div>
+                        <label class="text-[10px] uppercase font-bold text-gray-500 mb-3 block">Face Value (USD)</label>
+                        <input type="number" placeholder="e.g. 100" class="w-full bg-white/5 border border-white/10 rounded-2xl px-5 py-4 outline-none focus:border-[#00D991] transition font-bold text-xl">
+                    </div>
+                    <div class="py-6 border-y border-white/5 my-8">
+                        <div class="flex justify-between items-center mb-3">
+                            <span class="text-xs text-gray-500">Current Selling Rate</span>
+                            <span class="text-xs font-black text-[#00D991]">NGN 1,327 / $</span>
+                        </div>
+                        <div class="flex justify-between items-baseline">
+                            <span class="text-xs text-gray-500">You Receive</span>
+                            <span class="text-4xl font-black text-[#00D991]">₦ 0.00</span>
+                        </div>
+                    </div>
+                    <button class="w-full bg-[#00D991] text-black py-5 rounded-2xl font-black text-lg hover:brightness-110 transition shadow-xl shadow-[#00D991]/10">Trade via WhatsApp</button>
+                    <p class="text-[9px] text-center text-gray-600 uppercase tracking-widest">Payout speed: &lt; 5 minutes</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- 3. New Floor: Rate Ticker -->
+    <div class="border-y border-white/5 py-6 bg-white/[0.02] overflow-hidden whitespace-nowrap relative">
+        <div class="flex animate-scroll space-x-16 items-center">
+            <span class="flex items-center space-x-3"><span class="w-2 h-2 rounded-full bg-blue-500"></span><span class="font-bold text-xs uppercase">Steam USD: 1,213 NGN</span></span>
+            <span class="flex items-center space-x-3"><span class="w-2 h-2 rounded-full bg-[#00D991]"></span><span class="font-bold text-xs uppercase">Vanilla Visa: 1,327 NGN</span></span>
+            <span class="flex items-center space-x-3"><span class="w-2 h-2 rounded-full bg-orange-500"></span><span class="font-bold text-xs uppercase">Xbox UK: 1,315 NGN</span></span>
+            <span class="flex items-center space-x-3"><span class="w-2 h-2 rounded-full bg-purple-500"></span><span class="font-bold text-xs uppercase">Razer Gold: 1,280 NGN</span></span>
+            <!-- Duplicated for loop -->
+            <span class="flex items-center space-x-3"><span class="w-2 h-2 rounded-full bg-blue-500"></span><span class="font-bold text-xs uppercase">Steam USD: 1,213 NGN</span></span>
+            <span class="flex items-center space-x-3"><span class="w-2 h-2 rounded-full bg-[#00D991]"></span><span class="font-bold text-xs uppercase">Vanilla Visa: 1,327 NGN</span></span>
+            <span class="flex items-center space-x-3"><span class="w-2 h-2 rounded-full bg-orange-500"></span><span class="font-bold text-xs uppercase">Xbox UK: 1,315 NGN</span></span>
+        </div>
+    </div>
+
+    <!-- 4. New Floor: How It Works (Procedure) -->
+    <section id="how-it-works" class="max-w-7xl mx-auto px-6 py-24">
+        <div class="text-center mb-20">
+            <h2 class="text-4xl md:text-5xl font-black mb-4 italic">How it works.</h2>
+            <p class="text-gray-500 text-[10px] font-black uppercase tracking-[0.3em]">Simple, Fast, Efficient</p>
+        </div>
+        <div class="grid md:grid-cols-3 gap-12 relative">
+            <div class="hidden md:block absolute top-10 left-0 w-full h-px bg-gradient-to-r from-transparent via-white/10 to-transparent z-0"></div>
+            <!-- Step 1 -->
+            <div class="relative z-10 text-center flex flex-col items-center">
+                <div class="w-20 h-20 rounded-full glass border-2 border-[#00D991] flex items-center justify-center text-3xl mb-8 bg-[#05080A]">🔍</div>
+                <h4 class="text-xl font-black mb-4">Choose Card</h4>
+                <p class="text-gray-500 text-sm leading-relaxed max-w-[200px]">Select your card type and amount on our calculator.</p>
+            </div>
+            <!-- Step 2 -->
+            <div class="relative z-10 text-center flex flex-col items-center">
+                <div class="w-20 h-20 rounded-full glass border-2 border-white/20 flex items-center justify-center text-3xl mb-8 bg-[#05080A]">💬</div>
+                <h4 class="text-xl font-black mb-4">Get Quote</h4>
+                <p class="text-gray-500 text-sm leading-relaxed max-w-[200px]">Connect with Joyce via WhatsApp for a final live rate.</p>
+            </div>
+            <!-- Step 3 -->
+            <div class="relative z-10 text-center flex flex-col items-center">
+                <div class="w-20 h-20 rounded-full glass border-2 border-white/20 flex items-center justify-center text-3xl mb-8 bg-[#05080A]">💰</div>
+                <h4 class="text-xl font-black mb-4">Instant Payout</h4>
+                <p class="text-gray-500 text-sm leading-relaxed max-w-[200px]">Submit your details and get paid in < 5 minutes.</p>
+            </div>
+        </div>
+    </section>
+
+    <!-- 5. Featured Data: Live Rates Table (From Original Site) -->
+    <section class="bg-white/5 py-24 px-6">
+        <div class="max-w-4xl mx-auto glass rounded-[40px] overflow-hidden border-white/5 shadow-2xl">
+            <div class="px-8 py-8 border-b border-white/5 flex justify-between items-center bg-white/[0.02]">
+                <h3 class="text-2xl font-black italic">Top Gift Cards Rates Today</h3>
+                <span class="text-[10px] text-[#00D991] font-bold uppercase tracking-widest">Update 2m ago</span>
+            </div>
+            <div class="overflow-x-auto">
+                <table class="w-full text-left text-sm">
+                    <thead>
+                        <tr class="text-gray-500 font-bold border-b border-white/5">
+                            <th class="px-8 py-6">Card Type</th>
+                            <th class="px-8 py-6">Category</th>
+                            <th class="px-8 py-6">Market Price (NGN)</th>
+                        </tr>
+                    </thead>
+                    <tbody class="divide-y divide-white/[0.05]">
+                        <tr class="hover:bg-white/[0.02] transition">
+                            <td class="px-8 py-6 font-bold flex items-center"><span class="w-2 h-2 rounded-full bg-[#00D991] mr-3"></span>Vanilla Visa</td>
+                            <td class="px-8 py-6 text-gray-400">[300-500]</td>
+                            <td class="px-8 py-6 font-black text-[#00D991] text-lg">₦ 1,327</td>
+                        </tr>
+                        <tr class="hover:bg-white/[0.02] transition">
+                            <td class="px-8 py-6 font-bold flex items-center"><span class="w-2 h-2 rounded-full bg-orange-500 mr-3"></span>Xbox UK</td>
+                            <td class="px-8 py-6 text-gray-400">Digital Code</td>
+                            <td class="px-8 py-6 font-black text-white text-lg">₦ 1,315</td>
+                        </tr>
+                        <tr class="hover:bg-white/[0.02] transition">
+                            <td class="px-8 py-6 font-bold flex items-center"><span class="w-2 h-2 rounded-full bg-blue-500 mr-3"></span>Steam Card</td>
+                            <td class="px-8 py-6 text-gray-400">EUR [100-200]</td>
+                            <td class="px-8 py-6 font-black text-white text-lg">₦ 1,270</td>
+                        </tr>
+                        <tr class="hover:bg-white/[0.02] transition">
+                            <td class="px-8 py-6 font-bold flex items-center"><span class="w-2 h-2 rounded-full bg-purple-500 mr-3"></span>Razer Gold</td>
+                            <td class="px-8 py-6 text-gray-400">USD [50-500]</td>
+                            <td class="px-8 py-6 font-black text-white text-lg">₦ 1,213</td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+            <div class="px-8 py-6 text-center bg-white/[0.01]">
+                <a href="#" class="text-[10px] font-black text-gray-500 uppercase tracking-widest hover:text-white transition">View all 120+ asset types</a>
+            </div>
+        </div>
+    </section>
+
+    <!-- 6. Features / Services -->
+    <section id="features" class="max-w-7xl mx-auto px-6 py-24">
+        <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
+            <div class="glass p-10 rounded-[40px] border-white/5 card-hover">
+                <div class="text-4xl mb-6">💸</div>
+                <h4 class="text-2xl font-black mb-4">Fast Payment</h4>
+                <p class="text-gray-500 text-sm leading-relaxed mb-6">Automated Bank Transfer via API. Your money hits your account as soon as the card is verified.</p>
+                <div class="text-[10px] font-black text-[#00D991]">AVG TIME: 180s</div>
+            </div>
+            <div class="glass p-10 rounded-[40px] border-[#00D991]/20 card-hover bg-[#00D991]/[0.02]">
+                <div class="text-4xl mb-6">📈</div>
+                <h4 class="text-2xl font-black mb-4 text-[#00D991]">Dynamic Trading</h4>
+                <p class="text-gray-500 text-sm leading-relaxed mb-6">We provide real-time exchange rates for transactions, leading to maximized profit growth for you.</p>
+                <div class="text-[10px] font-black text-[#00D991]">REAL-TIME CALCULATOR</div>
+            </div>
+            <div class="glass p-10 rounded-[40px] border-white/5 card-hover">
+                <div class="text-4xl mb-6">📞</div>
+                <h4 class="text-2xl font-black mb-4">24/7 Support</h4>
+                <p class="text-gray-500 text-sm leading-relaxed mb-6">Customer satisfaction is our pursuit. Joyce and the team are online 24/7 for you.</p>
+                <div class="text-[10px] font-black text-white/50 underline transition hover:text-[#00D991]">CHAT NOW</div>
+            </div>
+        </div>
+    </section>
+
+    <!-- 7. About: The Big African Face (Trust Floor) -->
+    <section id="about" class="px-6 py-24 border-y border-white/5 overflow-hidden">
+        <div class="max-w-7xl mx-auto grid md:grid-cols-2 gap-20 items-center">
+            <div class="relative group">
+                <div class="absolute -inset-1 bg-gradient-to-r from-[#00D991] to-blue-500 rounded-[50px] opacity-20 group-hover:opacity-40 transition blur-xl"></div>
+                <img src="https://images.unsplash.com/photo-1522529599102-193c0d76b5b6?q=80&w=1000" class="rounded-[50px] relative z-10 grayscale group-hover:grayscale-0 transition duration-700 shadow-2xl">
+            </div>
+            <div>
+                <h2 class="text-5xl md:text-7xl font-black mb-8 italic tracking-tighter italic">Experience <br>Swift Service.</h2>
+                <div class="space-y-8 text-gray-400 text-lg leading-relaxed">
+                    <p>We provide the most competitive rates and instant response, which is why we’ve served more than 100K+ users globally.</p>
+                    <p>Your security is our priority. Prstmit provides cloud transaction quotation system and 24/7 dedicated customer service.</p>
+                </div>
+                <div class="mt-12 flex items-center space-x-12">
+                    <div><div class="text-2xl font-black">10+</div><p class="text-xs text-gray-500 uppercase tracking-widest font-bold">Years Experience</p></div>
+                    <div><div class="text-2xl font-black">206k</div><p class="text-xs text-gray-500 uppercase tracking-widest font-bold">Successful Trades</p></div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- 8. Testimonials Section -->
+    <section id="reviews" class="max-w-7xl mx-auto px-6 py-32 text-center">
+        <h2 class="text-5xl font-black mb-20 italic">What Clients Say.</h2>
+        <div class="grid md:grid-cols-3 gap-8">
+            <div class="glass p-10 rounded-[40px] text-left border-white/5">
+                <img src="https://images.unsplash.com/photo-1521572267360-ee0c2909d518?q=80&w=100" class="w-14 h-14 rounded-full mb-6 border-2 border-[#00D991]">
+                <p class="text-gray-400 text-sm leading-relaxed mb-8 italic">"Joyce is a trustworthy person and fastest in payments transactions, reliable and friendly. Love Prstmit!"</p>
+                <div class="font-black text-sm uppercase">Kiss Stephen</div>
+                <div class="text-[10px] text-[#00D991] font-bold mt-1">Lagos, Nigeria</div>
+            </div>
+            <div class="glass p-10 rounded-[40px] text-left border-[#00D991]/40 shadow-2xl bg-white/[0.01]">
+                <img src="https://images.unsplash.com/photo-1531123897727-8f129e1688ce?q=80&w=100" class="w-14 h-14 rounded-full mb-6 border-2 border-white/20">
+                <p class="text-white text-sm leading-relaxed mb-8 italic font-semibold">"They respect and value their customers 100%. Truly fast and amazing rates. It’s a pleasure meeting you guys!"</p>
+                <div class="font-black text-sm uppercase">Sara Smith</div>
+                <div class="text-[10px] text-[#00D991] font-bold mt-1">Abuja, Nigeria</div>
+            </div>
+            <div class="glass p-10 rounded-[40px] text-left border-white/5">
+                <img src="https://images.unsplash.com/photo-1506277886164-e25aa3f4ef7f?q=80&w=100" class="w-14 h-14 rounded-full mb-6 border-2 border-white/10">
+                <p class="text-gray-400 text-sm leading-relaxed mb-8 italic">"She is the fastest and most reliable I've ever done business with. Click away from putting a smile on your face."</p>
+                <div class="font-black text-sm uppercase">Tommy H.</div>
+                <div class="text-[10px] text-[#00D991] font-bold mt-1">Accra, Ghana</div>
+            </div>
+        </div>
+    </section>
+
+    <!-- 9. New Floor: FAQ -->
+    <section id="faq" class="max-w-3xl mx-auto px-6 py-24">
+        <h2 class="text-3xl font-black mb-12 text-center italic">Common Questions</h2>
+        <div class="space-y-4">
+            <details class="glass rounded-2xl group border-white/5">
+                <summary class="list-none px-6 py-5 cursor-pointer font-bold flex justify-between items-center group-open:text-[#00D991] transition">
+                    How long does it take to get paid?
+                    <span class="text-gray-500 group-open:rotate-180 transition">▼</span>
+                </summary>
+                <div class="px-6 pb-5 text-sm text-gray-500 leading-relaxed">Most transactions are completed within 5 minutes. Once your card is verified, the transfer is automated.</div>
+            </details>
+            <details class="glass rounded-2xl group border-white/5">
+                <summary class="list-none px-6 py-5 cursor-pointer font-bold flex justify-between items-center group-open:text-[#00D991] transition">
+                    What card types do you accept?
+                    <span class="text-gray-500 group-open:rotate-180 transition">▼</span>
+                </summary>
+                <div class="px-6 pb-5 text-sm text-gray-500 leading-relaxed">We accept Steam, Vanilla, Xbox, Razer Gold, Apple, Google Play, Amazon, and many more gift card types globally.</div>
+            </details>
+        </div>
+    </section>
+
+    <!-- 10. Large Footer -->
+    <footer class="bg-black pt-24 pb-12 px-6 border-t border-white/5">
+        <div class="max-w-7xl mx-auto">
+            <div class="grid md:grid-cols-4 gap-12 mb-20 text-center md:text-left">
+                <div class="md:col-span-2">
+                    <div class="text-3xl font-black text-[#00D991] mb-6">PRSTMIT<span class="text-white">.VIP</span></div>
+                    <p class="text-gray-600 text-sm max-w-sm mb-8">Africa's leading gift card exchange platform. Secure, transparent, and always yielding higher profits for our customers.</p>
+                </div>
+                <div>
+                    <h5 class="text-xs font-black uppercase tracking-widest text-white mb-6">Navigation</h5>
+                    <ul class="space-y-4 text-sm text-gray-600 font-bold uppercase tracking-widest text-[10px]">
+                        <li><a href="#" class="hover:text-[#00D991]">Exchange Table</a></li>
+                        <li><a href="#" class="hover:text-[#00D991]">Privacy Policy</a></li>
+                        <li><a href="#" class="hover:text-[#00D991]">Terms of Service</a></li>
+                    </ul>
+                </div>
+                <div>
+                    <h5 class="text-xs font-black uppercase tracking-widest text-white mb-6">Contact Us</h5>
+                    <ul class="space-y-4 text-sm text-gray-600 font-bold uppercase tracking-widest text-[10px]">
+                        <li>WhatsApp 24/7</li>
+                        <li>support@prstmit.vip</li>
+                        <li>Lagos, Nigeria</li>
+                    </ul>
+                </div>
+            </div>
+            <div class="flex flex-col md:flex-row justify-between items-center pt-12 border-t border-white/[0.05] gap-6">
+                <p class="text-gray-700 text-[10px] font-black uppercase tracking-widest italic">© 2026 PRSTMIT EXCHANGE. MADE BY SUCCESS.</p>
+                <div class="flex space-x-4 opacity-30 italic font-black text-xs">
+                    <span>SECURE</span><span>API</span><span>PAYSTACK</span>
+                </div>
+            </div>
+        </div>
+    </footer>
+
+</body>
+</html>
