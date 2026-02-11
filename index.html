@@ -3,136 +3,195 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>WhatsApp Integration Demo</title>
+    <title>Prstmit - Sell Gift Cards Easy & Fast</title>
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" rel="stylesheet">
     <style>
         :root {
+            --primary-color: #ffd700;
+            --dark-bg: #121212;
+            --card-bg: #1e1e1e;
             --wa-green: #25D366;
-            --wa-dark: #128C7E;
         }
         body {
-            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            font-family: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
+            background-color: var(--dark-bg);
+            color: #ffffff;
             margin: 0;
             padding: 0;
-            background-color: #f4f7f6;
-            height: 2000px; /* 模拟长页面滚动 */
+            line-height: 1.6;
         }
 
-        /* 通用按钮样式 */
-        .wa-link {
-            display: inline-flex;
-            align-items: center;
-            justify-content: center;
-            background-color: var(--wa-green);
-            color: white;
+        /* Hero Section */
+        .hero {
+            padding: 80px 20px;
+            text-align: center;
+            background: linear-gradient(180deg, #1a1a1a 0%, #121212 100%);
+        }
+        .hero h1 {
+            font-size: 3rem;
+            color: var(--primary-color);
+            margin-bottom: 20px;
+        }
+        .hero p {
+            font-size: 1.2rem;
+            max-width: 800px;
+            margin: 0 auto 40px;
+            color: #ccc;
+        }
+
+        /* Buttons */
+        .btn-trade {
+            background-color: var(--primary-color);
+            color: #000;
+            padding: 15px 40px;
+            border-radius: 8px;
             text-decoration: none;
-            font-weight: 600;
-            border-radius: 50px;
-            transition: all 0.3s ease;
-            cursor: pointer;
-            border: none;
+            font-weight: bold;
+            font-size: 1.1rem;
+            display: inline-block;
+            transition: 0.3s;
+        }
+        .btn-trade:hover {
+            transform: scale(1.05);
+            background-color: #e6c200;
         }
 
-        .wa-link:hover {
-            background-color: var(--wa-dark);
-            transform: translateY(-2px);
-            box-shadow: 0 4px 15px rgba(0,0,0,0.2);
+        /* Stats Section */
+        .stats-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 20px;
+            max-width: 1000px;
+            margin: -50px auto 60px;
+            padding: 0 20px;
+        }
+        .stat-card {
+            background: var(--card-bg);
+            padding: 30px;
+            border-radius: 15px;
+            text-align: center;
+            border: 1px solid #333;
+        }
+        .stat-card h2 { color: var(--primary-color); margin: 0; font-size: 2.5rem; }
+
+        /* Rate Calculator Sim */
+        .calculator {
+            max-width: 600px;
+            margin: 60px auto;
+            background: var(--card-bg);
+            padding: 40px;
+            border-radius: 20px;
+            border: 1px solid #ffd70033;
+        }
+        .calculator h2 { text-align: center; color: var(--primary-color); }
+        .input-group { margin-bottom: 20px; }
+        .input-group label { display: block; margin-bottom: 8px; color: #aaa; }
+        .input-group select, .input-group input {
+            width: 100%;
+            padding: 12px;
+            background: #2a2a2a;
+            border: 1px solid #444;
+            color: white;
+            border-radius: 8px;
         }
 
-        /* 1. 悬浮按钮 (滚动时始终保持在右下角) */
+        /* Reviews */
+        .reviews { padding: 80px 20px; background: #0a0a0a; }
+        .review-card {
+            background: var(--card-bg);
+            padding: 25px;
+            border-radius: 12px;
+            margin-bottom: 20px;
+            border-left: 4px solid var(--primary-color);
+        }
+
+        /* Floating WhatsApp */
         .wa-float {
             position: fixed;
             bottom: 30px;
             right: 30px;
-            width: 60px;
-            height: 60px;
+            background-color: var(--wa-green);
+            width: 65px;
+            height: 65px;
             border-radius: 50%;
-            font-size: 30px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            box-shadow: 0 4px 15px rgba(0,0,0,0.4);
             z-index: 1000;
-            box-shadow: 2px 2px 10px rgba(0,0,0,0.3);
-            animation: pulse-animation 2s infinite;
+            animation: pulse 2s infinite;
+            text-decoration: none;
         }
-        
-        /* 浮动按钮旁边的文字提示 (可选) */
-        .wa-float-text {
-            position: fixed;
-            bottom: 40px;
-            right: 100px;
-            background: white;
-            padding: 8px 15px;
-            border-radius: 20px;
-            box-shadow: 0 2px 10px rgba(0,0,0,0.1);
-            font-size: 14px;
-            font-weight: bold;
-            z-index: 999;
+        .wa-float i { font-size: 35px; color: white; }
+
+        @keyframes pulse {
+            0% { transform: scale(1); box-shadow: 0 0 0 0 rgba(37, 211, 102, 0.7); }
+            70% { transform: scale(1.05); box-shadow: 0 0 0 15px rgba(37, 211, 102, 0); }
+            100% { transform: scale(1); box-shadow: 0 0 0 0 rgba(37, 211, 102, 0); }
         }
 
-        @keyframes pulse-animation {
-            0% { box-shadow: 0 0 0 0 rgba(37, 211, 102, 0.7); }
-            70% { box-shadow: 0 0 0 15px rgba(37, 211, 102, 0); }
-            100% { box-shadow: 0 0 0 0 rgba(37, 211, 102, 0); }
-        }
-
-        /* 页面内嵌按钮 */
-        .container {
-            max-width: 800px;
-            margin: 100px auto;
-            text-align: center;
-            background: white;
-            padding: 40px;
-            border-radius: 15px;
-            box-shadow: 0 4px 20px rgba(0,0,0,0.05);
-        }
-
-        .inline-btn {
-            padding: 15px 30px;
-            margin: 10px;
-            font-size: 16px;
-        }
-
-        .section-box {
-            margin-top: 50px;
-            padding: 20px;
-            border: 1px dashed #ccc;
-        }
-
+        footer { text-align: center; padding: 40px; color: #666; font-size: 0.9rem; }
     </style>
 </head>
 <body>
 
-    <div class="container">
-        <h1>Welcome to Our Store</h1>
-        <p>Scroll down to see the persistent floating button.</p>
-        
-        <div class="section-box">
-            <h3>Option 1: Action Focused</h3>
-            <a href="https://wa.me/85266431798?text=I%20am%20interested%20in%20trading" class="wa-link inline-btn">
-                🚀 Trade Now
-            </a>
-        </div>
+    <section class="hero">
+        <h1>Sell Gift Card</h1>
+        <h3>Easy & Fast with Prstmit™</h3>
+        <p>Prstmit is your trusted partner for selling gift cards online. Turn your gift cards into cash quickly and securely. Sell your gift cards today!</p>
+        <a href="https://wa.me/85266431798?text=I%20want%20to%20trade%20now" class="btn-trade">
+            Trade Now
+        </a>
+    </section>
 
-        <div class="section-box">
-            <h3>Option 2: Service Focused</h3>
-            <a href="https://wa.me/85266431798?text=I%20need%20a%20quote%20for%20my%20order" class="wa-link inline-btn">
-                📋 Get a Quote
-            </a>
-        </div>
-
-        <div class="section-box">
-            <h3>Option 3: Inquiry Focused</h3>
-            <a href="https://wa.me/85266431798?text=Please%20send%20me%20the%20latest%20price%20list" class="wa-link inline-btn">
-                💰 Latest Pricing
-            </a>
-        </div>
-
-        <p style="margin-top: 500px;">(Continue scrolling... the green button stays with you)</p>
+    <div class="stats-grid">
+        <div class="stat-card"><h2>30</h2><p>Cards Processed/Day</p></div>
+        <div class="stat-card"><h2>10</h2><p>Transactions/Day</p></div>
+        <div class="stat-card"><h2>20</h2><p>Years of Trust</p></div>
     </div>
 
-    <!-- 浮动展示区 -->
-    <div class="wa-float-text">Chat with us!</div>
-    <a href="https://wa.me/85266431798" class="wa-link wa-float" target="_blank">
-        <svg width="35" height="35" viewBox="0 0 24 24" fill="white">
-            <path d="M.057 24l1.687-6.163c-1.041-1.804-1.588-3.849-1.587-5.946.003-6.556 5.338-11.891 11.893-11.891 3.181.001 6.167 1.24 8.413 3.488 2.246 2.248 3.484 5.232 3.484 8.412-.003 6.557-5.338 11.892-11.893 11.892-1.997-.001-3.951-.5-5.688-1.448l-6.307 1.656zm6.304-4.043c1.552.921 3.289 1.408 5.053 1.409 5.403 0 9.802-4.398 9.805-9.801.002-2.618-1.02-5.08-2.878-6.937-1.857-1.857-4.319-2.879-6.933-2.88-5.405 0-9.803 4.398-9.806 9.801 0 1.847.519 3.655 1.503 5.232l-.993 3.626 3.73-.978l.02.012zm10.231-6.953c-.273-.137-1.62-.8-1.87-.892-.252-.092-.434-.137-.617.137-.184.273-.711.892-.871 1.076-.16.184-.32.206-.593.07-.273-.137-1.155-.426-2.2-1.358-.813-.725-1.362-1.62-1.523-1.893-.16-.273-.017-.42.12-.556.123-.122.273-.32.41-.481.137-.16.184-.273.275-.458.092-.184.045-.344-.023-.481-.068-.137-.617-1.487-.845-2.035-.221-.53-.447-.457-.617-.465-.159-.007-.341-.008-.523-.008s-.479.068-.73.344c-.252.273-.961.94-.961 2.292s.985 2.659 1.123 2.842c.137.184 1.938 2.961 4.695 4.151.656.283 1.168.452 1.569.579.659.209 1.258.18 1.733.109.53-.079 1.62-.662 1.848-1.298.228-.636.228-1.183.16-1.298-.068-.117-.252-.184-.526-.32z"/>
-        </svg>
+    <section class="calculator">
+        <h2>Gift Card Rate Calculator</h2>
+        <div class="input-group">
+            <label>Select Gift Card Type</label>
+            <select>
+                <option>Steam Card</option>
+                <option>Vanilla Visa</option>
+                <option>Apple/iTunes</option>
+                <option>Xbox</option>
+            </select>
+        </div>
+        <div class="input-group">
+            <label>Face Value</label>
+            <input type="number" placeholder="Enter amount (e.g. 100)">
+        </div>
+        <a href="https://wa.me/85266431798?text=Get%20Latest%20Pricing" class="btn-trade" style="width: 100%; text-align: center; box-sizing: border-box;">
+            Get a Quote
+        </a>
+    </section>
+
+    <section class="reviews">
+        <h2 style="text-align: center; color: var(--primary-color); margin-bottom: 40px;">What Our Clients Say</h2>
+        <div style="max-width: 800px; margin: 0 auto;">
+            <div class="review-card">
+                <p>"The company is doing so well, trades are fast no delay. Keep the Good work!"</p>
+                <strong>- Henrycavill</strong>
+            </div>
+            <div class="review-card">
+                <p>"Truly fast and amazing rate. Trusted and they respect customers 100%."</p>
+                <strong>- Tommy</strong>
+            </div>
+        </div>
+    </section>
+
+    <footer>
+        &copy; 2026 Prstmit™. All Rights Reserved. <br>
+        Contact us anytime for 24/7 Service.
+    </footer>
+
+    <!-- 全局悬浮按钮 -->
+    <a href="https://wa.me/85266431798" class="wa-float" target="_blank">
+        <i class="fab fa-whatsapp"></i>
     </a>
 
 </body>
