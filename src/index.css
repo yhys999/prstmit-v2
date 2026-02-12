@@ -1,0 +1,203 @@
+@import url("https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500&family=Noto+Sans+SC:wght@400;500;700&display=swap");
+@import "tailwindcss";
+@import "tw-animate-css";
+
+@custom-variant dark (&:is(.dark *));
+
+/*
+==========================================================================
+【AI HANDOVER NOTE】
+1. DESIGN PHILOSOPHY:
+   - 主设计理念：Fintech Neo-minimalism (金融科技新极简主义)。针对 Prstmit 礼品卡交易平台，设计强调“速度”与“信任”。
+   - 视觉风格：采用 Bento Grid (便当盒) 布局来模块化展示不同的礼品卡品类与实时汇率，利用 Physicality 风格的微阴影和 Rim-light (边缘光) 增强交互组件的点击感。
+   - 针对非洲市场的优化：使用高对比度的文字排版，确保在各种光照条件下及低端移动设备显示器上的可读性。
+
+2. TYPOGRAPHY:
+   - Sans (Inter + Noto Sans SC): 选择 Inter 是因其卓越的数字易读性和专业感；配合 Noto Sans SC 确保中文语境下的字重一致性。
+   - Mono (JetBrains Mono): 专门用于实时汇率、交易流水号和金额展示，利用其等宽特性防止数值跳变，增强数据的严谨性。
+
+3. COLOR SYSTEM:
+   - 品牌主色: 选用深邃的电光蓝 (oklch Hue 262)，象征金融级安全与高效。辅助色使用高饱和绿 (Success) 代表交易获利。
+   - 映射逻辑: --primary 直接对应品牌蓝，用于核心 CTA；--accent 用于报表高亮和悬停反馈，保持视觉呼吸感。
+   - 语义色: 严格遵循 OKLCH 亮度控制，确保在深色模式下 destructive (红色) 不会刺眼，且保持足够的警告强度。
+
+4. USAGE GUIDE:
+   - 布局建议：首页采用 Centered container (1280px) 以维持品牌高级感，交易仪表盘建议使用 full-width 布局。
+   - 特效建议：对卡片组件使用 backdrop-blur (12px) 配合极细的 border (oklch 亮度 0.92) 实现玻璃质感。
+   - 信任规则：所有涉及 Joyce (客服) 或评价的卡片，必须带有关联感性的微阴影 (Ambient Occlusion) 以区别于纯数据组件。
+==========================================================================
+*/
+
+:root {
+  /* Typography */
+  --font-sans: Inter, 'Noto Sans SC', system-ui, sans-serif;
+  --font-mono: 'JetBrains+Mono', monospace;
+  
+  /* Radius */
+  --radius: 0.75rem;
+
+  /* Core UI Tokens */
+  --background: oklch(0.99 0.005 262);
+  --foreground: oklch(0.15 0.02 262);
+  --card: oklch(1 0 0);
+  --card-foreground: oklch(0.15 0.02 262);
+  --popover: oklch(1 0 0);
+  --popover-foreground: oklch(0.15 0.02 262);
+  --primary: oklch(0.55 0.22 262);
+  --primary-foreground: oklch(0.98 0.01 262);
+  --secondary: oklch(0.96 0.01 262);
+  --secondary-foreground: oklch(0.25 0.04 262);
+  --muted: oklch(0.96 0.01 262);
+  --muted-foreground: oklch(0.45 0.03 262);
+  --accent: oklch(0.92 0.03 262);
+  --accent-foreground: oklch(0.25 0.04 262);
+  --destructive: oklch(0.58 0.19 25);
+  --destructive-foreground: oklch(0.98 0.01 262);
+  --border: oklch(0.92 0.01 262);
+  --input: oklch(0.92 0.01 262);
+  --ring: oklch(0.55 0.22 262);
+  
+  /* Chart Tokens */
+  --chart-1: oklch(0.62 0.18 262);
+  --chart-2: oklch(0.72 0.14 150);
+  --chart-3: oklch(0.55 0.15 35);
+  --chart-4: oklch(0.78 0.12 85);
+  --chart-5: oklch(0.65 0.16 210);
+  
+  /* Sidebar Tokens */
+  --sidebar: oklch(0.98 0.005 262);
+  --sidebar-foreground: oklch(0.25 0.03 262);
+  --sidebar-primary: oklch(0.55 0.22 262);
+  --sidebar-primary-foreground: oklch(0.98 0.01 262);
+  --sidebar-accent: oklch(0.94 0.02 262);
+  --sidebar-accent-foreground: oklch(0.25 0.03 262);
+  --sidebar-border: oklch(0.92 0.01 262);
+  --sidebar-ring: oklch(0.55 0.22 262);
+}
+
+.dark {
+  --background: oklch(0.12 0.02 262);
+  --foreground: oklch(0.98 0.01 262);
+  --card: oklch(0.16 0.02 262);
+  --card-foreground: oklch(0.98 0.01 262);
+  --popover: oklch(0.14 0.02 262);
+  --popover-foreground: oklch(0.98 0.01 262);
+  --primary: oklch(0.65 0.18 262);
+  --primary-foreground: oklch(0.12 0.02 262);
+  --secondary: oklch(0.22 0.03 262);
+  --secondary-foreground: oklch(0.98 0.01 262);
+  --muted: oklch(0.22 0.02 262);
+  --muted-foreground: oklch(0.65 0.02 262);
+  --accent: oklch(0.25 0.04 262);
+  --accent-foreground: oklch(0.98 0.01 262);
+  --destructive: oklch(0.55 0.18 25);
+  --destructive-foreground: oklch(0.98 0.01 262);
+  --border: oklch(0.25 0.02 262);
+  --input: oklch(0.25 0.02 262);
+  --ring: oklch(0.65 0.18 262);
+  
+  /* Chart Tokens */
+  --chart-1: oklch(0.65 0.18 262);
+  --chart-2: oklch(0.68 0.15 150);
+  --chart-3: oklch(0.58 0.16 35);
+  --chart-4: oklch(0.75 0.14 85);
+  --chart-5: oklch(0.62 0.17 210);
+  
+  /* Sidebar Tokens */
+  --sidebar: oklch(0.14 0.02 262);
+  --sidebar-foreground: oklch(0.92 0.01 262);
+  --sidebar-primary: oklch(0.65 0.18 262);
+  --sidebar-primary-foreground: oklch(0.12 0.02 262);
+  --sidebar-accent: oklch(0.22 0.03 262);
+  --sidebar-accent-foreground: oklch(0.98 0.01 262);
+  --sidebar-border: oklch(0.25 0.02 262);
+  --sidebar-ring: oklch(0.65 0.18 262);
+}
+
+@theme inline {
+  /* Shadcn Core Mapping */
+  --color-background: var(--background);
+  --color-foreground: var(--foreground);
+  --color-card: var(--card);
+  --color-card-foreground: var(--card-foreground);
+  --color-popover: var(--popover);
+  --color-popover-foreground: var(--popover-foreground);
+  --color-primary: var(--primary);
+  --color-primary-foreground: var(--primary-foreground);
+  --color-secondary: var(--secondary);
+  --color-secondary-foreground: var(--secondary-foreground);
+  --color-muted: var(--muted);
+  --color-muted-foreground: var(--muted-foreground);
+  --color-accent: var(--accent);
+  --color-accent-foreground: var(--accent-foreground);
+  --color-destructive: var(--destructive);
+  --color-destructive-foreground: var(--destructive-foreground);
+  --color-border: var(--border);
+  --color-input: var(--input);
+  --color-ring: var(--ring);
+
+  /* Charts Mapping */
+  --color-chart-1: var(--chart-1);
+  --color-chart-2: var(--chart-2);
+  --color-chart-3: var(--chart-3);
+  --color-chart-4: var(--chart-4);
+  --color-chart-5: var(--chart-5);
+
+  /* Sidebar Mapping */
+  --color-sidebar: var(--sidebar);
+  --color-sidebar-foreground: var(--sidebar-foreground);
+  --color-sidebar-primary: var(--sidebar-primary);
+  --color-sidebar-primary-foreground: var(--sidebar-primary-foreground);
+  --color-sidebar-accent: var(--sidebar-accent);
+  --color-sidebar-accent-foreground: var(--sidebar-accent-foreground);
+  --color-sidebar-border: var(--sidebar-border);
+  --color-sidebar-ring: var(--sidebar-ring);
+
+  /* Typography */
+  --font-sans: var(--font-sans);
+  --font-mono: var(--font-mono);
+
+  /* Radius */
+  --radius-lg: var(--radius);
+  --radius-md: calc(var(--radius) - 2px);
+  --radius-sm: calc(var(--radius) - 4px);
+  --radius-xl: calc(var(--radius) + 4px);
+}
+
+@layer base {
+  * {
+    @apply border-border outline-ring/50;
+  }
+
+  html {
+    @apply scroll-smooth antialiased;
+  }
+
+  body {
+    @apply bg-background text-foreground font-sans min-h-screen;
+    font-feature-settings: "cv02", "cv03", "cv04", "cv11";
+  }
+
+  h1, h2, h3, h4, h5, h6 {
+    @apply font-semibold tracking-tight;
+  }
+
+  code, pre {
+    @apply font-mono;
+  }
+
+  ::selection {
+    @apply bg-primary/20 text-primary;
+  }
+
+  ::-webkit-scrollbar {
+    width: 6px;
+    height: 6px;
+  }
+  ::-webkit-scrollbar-track {
+    @apply bg-transparent;
+  }
+  ::-webkit-scrollbar-thumb {
+    @apply bg-muted-foreground/20 rounded-full hover:bg-muted-foreground/40;
+  }
+}
