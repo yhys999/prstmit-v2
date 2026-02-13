@@ -241,8 +241,3 @@ export default defineConfig(({ mode }) => {
     },
   }
 });
-GING !== 'false'
-      ),
-    },
-  }
-});
