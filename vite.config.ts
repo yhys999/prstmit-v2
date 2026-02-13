@@ -208,7 +208,7 @@ function cdnPrefixImages(): Plugin {
 // https://vitejs.dev/config/
 export default defineConfig(({ mode }) => {
   return {
-    base: mode === 'production' ? '/prstmit-v2/' : '/',
+    base: '/',
     server: {
       host: "::",
       port: 8080,
@@ -237,6 +237,11 @@ export default defineConfig(({ mode }) => {
         mode === 'production' 
           ? process.env.VITE_ENABLE_ROUTE_MESSAGING === 'true'
           : process.env.VITE_ENABLE_ROUTE_MESSAGING !== 'false'
+      ),
+    },
+  }
+});
+GING !== 'false'
       ),
     },
   }
