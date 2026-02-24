@@ -1,4 +1,4 @@
-import React, { useState, useMemo } from 'react';
+import React, { useState, useMemo, useEffect } from 'react';
 import { motion } from 'framer-motion';
 import { 
   Star, 
@@ -23,6 +23,13 @@ import {
   calculatePayout, 
   GiftCard 
 } from '@/lib/index';
+import { 
+  trackWhatsAppClick, 
+  trackCalculatorUse, 
+  trackPhoneClick, 
+  trackEmailClick,
+  trackViewCard 
+} from '@/lib/analytics';
 import { Button } from '@/components/ui/button';
 import { Input } from '@/components/ui/input';
 import { Card, CardContent, CardHeader, CardTitle, CardDescription } from '@/components/ui/card';
@@ -55,6 +62,32 @@ const Home: React.FC = () => {
     const numAmount = parseFloat(amount) || 0;
     return calculatePayout(numAmount, selectedCard.rate);
   }, [amount, selectedCard]);
+
+  // 跟踪事件处理函数
+  const handleWhatsAppClick = (cardType?: string, cardAmount?: string) => {
+    trackWhatsAppClick(cardType, cardAmount);
+  };
+
+  const handlePhoneClick = () => {
+    trackPhoneClick();
+  };
+
+  const handleEmailClick = () => {
+    trackEmailClick();
+  };
+
+  // 当用户更改计算器时跟踪
+  useEffect(() => {
+    const numAmount = parseFloat(amount);
+    if (numAmount > 0) {
+      trackCalculatorUse(selectedCard.name, numAmount);
+    }
+  }, [selectedCardId, amount]);
+
+  // 当用户选择卡片时跟踪
+  useEffect(() => {
+    trackViewCard(selectedCard.name, selectedCard.rate);
+  }, [selectedCardId]);
 
   return (
     <div className="flex flex-col min-h-screen">

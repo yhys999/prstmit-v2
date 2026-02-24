@@ -1,0 +1,26 @@
+否定关键词,匹配类型,说明
+free,广泛匹配,排除寻找免费服务的用户
+hack,广泛匹配,排除非法活动
+generator,广泛匹配,排除骗局搜索
+illegal,广泛匹配,排除非法意图
+fake,广泛匹配,排除假卡搜索
+scam,广泛匹配,排除诈骗相关
+buy,词组匹配,我们只收购不出售
+wholesale,广泛匹配,不做批发业务
+"gift card designs",词组匹配,非我们业务
+printable,广泛匹配,非我们业务
+template,广泛匹配,非我们业务
+how to make,词组匹配,非交易意图
+free gift card,词组匹配,排除免费卡搜索
+gift card code,广泛匹配,可能寻找代码
+cheat,广泛匹配,排除作弊相关
+crack,广泛匹配,排除破解相关
+torrent,广泛匹配,排除盗版相关
+download,广泛匹配,可能非交易意图
+job,广泛匹配,排除求职搜索
+hiring,广泛匹配,排除招聘搜索
+review,广泛匹配,可能只是研究
+tutorial,广泛匹配,非交易意图
+images,广泛匹配,图片搜索
+clip art,词组匹配,图片搜索
+background,广泛匹配,设计搜索
