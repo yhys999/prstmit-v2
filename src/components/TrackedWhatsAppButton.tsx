@@ -21,7 +21,7 @@ export const TrackedWhatsAppButton: React.FC<TrackedWhatsAppButtonProps> = ({
   floatingButton = false,
 }) => {
   const handleClick = () => {
-    trackWhatsAppClick(cardType, amount);
+    trackWhatsAppClick(whatsappUrl);
   };
 
   const whatsappUrl = cardType && amount
