@@ -23,9 +23,6 @@ import {
   calculatePayout,
   GiftCard,
 } from "@/lib/index";
-import {
-  trackWhatsAppClick,
-} from "@/lib/analytics";
 import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
 import {
@@ -71,7 +68,7 @@ const Home: React.FC = () => {
   // 跟踪事件处理函数
   const handleWhatsAppClick = () => {
     const url = `https://wa.me/2348123456789?text=Hi%20Joyce,%20I%20want%20to%20trade%20my%20gift%20card`;
-    trackWhatsAppClick(url);
+    window.gtag_report_conversion(url);
   };
   return (
     <div className="flex flex-col min-h-screen">

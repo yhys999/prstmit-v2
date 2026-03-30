@@ -5,7 +5,6 @@ import { Menu, X, ShieldCheck, ChevronRight, ArrowRight } from "lucide-react";
 import { SiWhatsapp, SiTelegram, SiX } from "react-icons/si";
 import { Button } from "@/components/ui/button";
 import { ROUTE_PATHS } from "@/lib/index";
-import { trackWhatsAppClick } from "@/lib/analytics";
 interface LayoutProps {
   children: React.ReactNode;
 }
@@ -31,7 +30,7 @@ export function Layout({ children }: LayoutProps) {
   // 跟踪事件处理函数
   const handleWhatsAppClick = () => {
     const url = `https://wa.me/2348123456789?text=Hi%20Joyce,%20I%20want%20to%20trade%20my%20gift%20card`;
-    trackWhatsAppClick(url);
+    window.gtag_report_conversion(url);
   };
   return (
     <div className="flex flex-col min-h-screen bg-background">
