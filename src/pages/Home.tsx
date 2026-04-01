@@ -42,6 +42,19 @@ import {
 import { Badge } from "@/components/ui/badge";
 import { Separator } from "@/components/ui/separator";
 
+const triggerWati = () => {
+  // 关键点 1：使用类型断言避免 TS 报错 (as HTMLImageElement)
+  const watiImg = document.getElementById(
+    "wati-capi-img",
+  ) as HTMLImageElement | null;
+
+  if (watiImg) {
+    // 关键点 2：直接模拟点击
+    watiImg.click();
+  } else {
+    console.warn("WATI 插件未找到，可能还在加载中...");
+  }
+};
 const springPresets = {
   gentle: { type: "spring" as const, stiffness: 300, damping: 35 },
   snappy: { type: "spring" as const, stiffness: 400, damping: 30 },
@@ -67,8 +80,9 @@ const Home: React.FC = () => {
 
   // 跟踪事件处理函数
   const handleWhatsAppClick = () => {
-    const url = `https://wa.me/2348123456789?text=Hi%20Joyce,%20I%20want%20to%20trade%20my%20gift%20card`;
-    window.gtag_report_conversion(url);
+    const url = `https://wa.me/16056506832?text=Hi%20Joyce,%20I%20want%20to%20trade%20my%20gift%20card`;
+    window.gtag_report_conversion();
+    triggerWati();
   };
   return (
     <div className="flex flex-col min-h-screen">
